@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHIN Navigation</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Navbar container */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 5%;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        /* Logo styles */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+        
+        /* Navigation menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #127c72; /* DHIN teal color */
+        }
+        
+        /* Dropdown indicator */
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+            
+            .hamburger-line {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px 0;
+                background-color: #333;
+                transition: all 0.3s;
+            }
+        }
+        
+        @media screen and (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="https://via.placeholder.com/120x60/ffffff/127c72?text=DHIN" alt="DHIN Logo">
+            </a>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/about" class="nav-link">About DHIN</a>
+            </li>
+            <li class="nav-item">
+                <a href="/community" class="nav-link">DHIN Community</a>
+            </li>
+            <li class="nav-item">
+                <a href="/event" class="nav-link">Event</a>
+            </li>
+            <li class="nav-item">
+                <a href="/newsletter" class="nav-link">Newsletter</a>
+            </li>
+            <li class="nav-item">
+                <a href="/standards" class="nav-link">Standards <span class="dropdown-icon">▼</span></a>
+            </li>
+        </ul>
+        
+        <div class="hamburger">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
