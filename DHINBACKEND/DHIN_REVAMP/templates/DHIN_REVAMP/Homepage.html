@@ -12,33 +12,119 @@
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #2d70b3;
-            --secondary-color: #f8f9fa;
+            --primary-color: #012862;
+            --secondary-color: #faf8f9;
         }
         
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+           .btn-outline-light {
+           color: white !important;
+           border-color: #005AFF !important;
+           height: 40px;
+           width: 110px;
+           
+        }
+
+           .btn-outline-light:hover {
+            background-color: #005AFF !important;
+            color: white !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 8px 24px;
+            border-radius: 5px;
         }
         
-        .navbar {
-            padding: 15px 0;
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: #005AFF;
+            padding: 8px 24px;
+            border-radius: 5px;
         }
-        
-        .navbar-brand img {
-            height: 40px;
+
+
+            body {
+            background-color:rgb(233, 249, 255) ;
+            color: black;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+
+            p {
+            color: #0d0f11; /* Slightly lighter blue color */
+            font-size: 16px; /* Font size */
+
+             /* Specific styles for h1 */
+            h1 {
+            color: #012862 ;
+            font-size: 25px; /* Larger font size for h1 */
+            font-weight: medium; /* Bold text */
+            }
+            }
+            
+            
         }
+
+        .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.right-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* space between nav links and right-nav */
+}
+
+/* Keep your existing .right-nav styles */
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.contact-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #005AFF;
+    border-radius: 25px;
+    color: #005AFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+.nav-link {
+    color: #011533;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #005AFF;
+}
+
+.navbar-brand img {
+    height: 98px;
+    width: 98px;
+}
         
         .hero-carousel {
             position: relative;
         }
         
         .carousel-item {
-            height: 724px; /* Updated height */
+            height: 726px; /* Updated height */
         }
         
         .carousel-item img {
             height: 100%;
-            width: 1314px; /* Set specific width */
+            width: 1310px; /* Set specific width */
             object-fit: cover;
         }
         
@@ -55,7 +141,7 @@
         
         .hero-content {
             position: absolute;
-            top: 50%;
+            top: 70%;
             left: 10%;
             transform: translateY(-50%);
             z-index: 10; /* Make sure this is higher than the overlay */
@@ -74,6 +160,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             height: 100%;
             transition: transform 0.3s;
+            padding: 10px;
         }
         
         .services-card:hover {
@@ -81,28 +168,17 @@
         }
         
         .services-card img {
-            height: 200px;
+            height: 288px;
             object-fit: cover;
-            width: 100%;
+            width: 281%;
+            border-radius: 8px;
         }
         
         .services-card .card-body {
             padding: 20px;
         }
         
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 8px 24px;
-            border-radius: 5px;
-        }
         
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 8px 24px;
-            border-radius: 5px;
-        }
         
         .section-title {
             margin-bottom: 40px;
@@ -120,12 +196,20 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             height: 100%;
+            padding: 10px;
+            
         }
         
         .newsletter-card img {
-            height: 200px;
+            height: 295px;
             object-fit: cover;
-            width: 100%;
+            width: 368%;
+            border-radius: 8px;
+            
+        }
+
+        .newsletter-card:hover {
+            transform: translateY(-5px);
         }
         
         .carousel-indicators [data-bs-target] {
@@ -139,7 +223,7 @@
         .footer {
             background-color: #002a5c;
             color: #ffffff;
-            padding: 50px 0 20px;
+            padding: 30px 0 20px;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -155,15 +239,16 @@
         }
 
         .footer-logo img {
-            height: 60px;
+            height: 98px;
         }
 
         .footer-section {
             min-width: 150px;
+            text-align: left; 
         }
 
         .footer-section h3 {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 20px;
         }
@@ -179,7 +264,7 @@
         .footer-links a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 12px;
             transition: opacity 0.3s;
         }
 
@@ -266,51 +351,52 @@
                 flex-direction: column;
                 gap: 20px;
             }
+            
+
+         
+
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="path/to/logo.png" alt="DHIN Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About DHIN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">DHIN Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Newsletter</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="standardsDropdown" role="button" data-bs-toggle="dropdown">
-                            Standards
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Standard 1</a></li>
-                            <li><a class="dropdown-item" href="#">Standard 2</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="ms-3">
-                    <a href="#" class="btn btn-outline-primary">Contact Us</a>
-                </div>
-                <div class="ms-2">
-                    <a href="#" class="text-dark">
-                        <i class="bi bi-search"></i>
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
+        </a>
+        <!-- Menu + Buttons grouped together -->
+        <div class="right-group">
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="{% url 'about' %}">About DHIN</a></li>
+                <li><a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a></li>
+                <li><a class="nav-link" href="{% url 'event_list' %}">Event</a></li>
+                <li><a class="nav-link" href="{% url 'newsletter_list' %}">Newsletter</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{% url 'standards' %}" id="standardsDropdown" role="button" data-bs-toggle="dropdown">
+                        Standards
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a></li>
+                        <li><a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a></li>
+                    </ul>
+                </li>
+            </ul>
+                </li>
+            </ul>
+            <div class="right-nav">
+                <a href="/contact" class="contact-btn">Contact Us</a>
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                 </div>
+            </div>
+        </div>
+    </div>
+</nav>
+        
             </div>
         </div>
     </nav>
@@ -319,12 +405,13 @@
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="fw-bold">DIGITAL HEALTH<br>INTEROPERABILITY NETWORK</h1>
-            <p class="my-4">Empowering business healthcare and bringing innovations through the Digital Health Interoperability Network</p>
+            <p class="my-4"style="color:white;">Empowering business healthcare and bringing innovations through the Digital Health Interoperability Network </style></p>
             <div class="mt-4">
-                <a href="#" class="btn btn-primary me-3">Register</a>
-                <a href="#" class="btn btn-outline-light">Learn More</a>
+                <a href="{% url 'user_list' %}" class="btn btn-primary me-3" >Register</a>
+                <a href="{% url 'services' %}" class="btn btn-outline-light">Learn More</a>
             </div>
         </div>
+        
         
         <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-indicators">
@@ -336,21 +423,22 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="C:\Users\FutureFit1\Downloads\4960dd2e-398e-4c3f-901e-72a250f3a1b0.JPG" class="d-block w-100" alt="DHIN Hero Image 1">
+                    <img src="{% static 'images/pic23.JPG' %}" class="d-block w-100" alt="DHIN Hero Image 1"loading="lazy" aria-hidden="true">>
                 </div>
                 <div class="carousel-item">
-                    <img src="C:\Users\FutureFit1\Downloads\DSC03344.JPG" class="d-block w-100" alt="DHIN Hero Image 2">
+                    <img src="{% static 'images/pic38.JPG' %}" class="d-block w-100" alt="DHIN Hero Image 2"loading="lazy" aria-hidden="true">>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/hero-image3.jpg" class="d-block w-100" alt="DHIN Hero Image 3">
+                    <img src="{% static 'images/pic41.JPG' %}" class="d-block w-100" alt="DHIN Hero Image 3"loading="lazy" aria-hidden="true">>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/hero-image4.jpg" class="d-block w-100" alt="DHIN Hero Image 4">
+                    <img src="{% static 'images/pic40.jpg' %}" class="d-block w-100" alt="DHIN Hero Image 4"loading="lazy" aria-hidden="true">>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/hero-image5.jpg" class="d-block w-100" alt="DHIN Hero Image 5">
+                    <img src="{% static 'images/pic3.JPG' %}" class="d-block w-100" alt="DHIN Hero Image 5"loading="lazy" aria-hidden="true">>
                 </div>
             </div>
+            
             <!-- Navigation buttons removed as requested -->
         </div>
     </section>
@@ -363,11 +451,11 @@
                 <!-- Service Card 1 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="services-card">
-                        <img src="path/to/policy-image.jpg" alt="Policy Advocacy">
+                        <img src="{% static 'images/pic9.JPG' %}" alt="Policy Advocacy" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title">Policy Advocacy</h5>
-                            <p class="card-text">At DHIN, we advocate for policy plans for improved interoperability in healthcare.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <p class="card-text">At DHIN, we advocate for policy plans for improved interoperability in healthcare. </p><br>
+                            <a href="{% url 'services' %}" class="btn btn-sm btn-outline-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -375,11 +463,11 @@
                 <!-- Service Card 2 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="services-card">
-                        <img src="path/to/standardization-image.jpg" alt="Standardization">
+                        <img src="{% static 'images/pic30.JPG' %}" alt="Standardization" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title">Standardization</h5>
                             <p class="card-text">DHIN is firmly committed to establish and implement standardized protocols for health data.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <a href="{% url 'services' %}" class="btn btn-sm btn-outline-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -387,11 +475,11 @@
                 <!-- Service Card 3 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="services-card">
-                        <img src="path/to/integration-image.jpg" alt="Integration">
+                        <img src="{% static 'images/pic3.JPG' %}" alt="Integration" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title">Integration</h5>
-                            <p class="card-text">A core focus of DHIN is ensuring that digital health devices smoothly exchange information.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <p class="card-text">A core focus of DHIN is ensuring that digital health devices smoothly exchange information.</p><br>
+                            <a href="{% url 'services' %}" class="btn btn-sm btn-outline-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -399,11 +487,11 @@
                 <!-- Service Card 4 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="services-card">
-                        <img src="path/to/collaboration-image.jpg" alt="Collaboration">
+                        <img src="{% static 'images/pic1.JPG' %}" alt="Collaboration" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title">Collaboration</h5>
-                            <p class="card-text">Collaborative work at all levels of DHIN members for sustainable and improved healthcare.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <p class="card-text">Collaborative work at all levels of DHIN members for sustainable and improved healthcare.</p><br>
+                            <a href="{% url 'services' %}" class="btn btn-sm btn-outline-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -418,10 +506,10 @@
                 <div class="col-lg-6">
                     <h2>Who are we?</h2>
                     <p class="my-4">At the Digital Health Interoperability Network (DHIN), our mission is to accelerate universal health coverage by fostering an enabling environment for integrating digital technologies through digital health interventions.</p>
-                    <a href="#" class="btn btn-outline-primary">Learn more</a>
+                    <a href="{% url 'services' %}" class="btn btn-outline-primary">Learn more</a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="path/to/about-image.jpg" alt="DHIN Team" class="img-fluid rounded">
+                    <img src="{% static 'images/pic2.JPG' %}" alt="DHIN Team" class="img-fluid rounded" width="613" height="448">
                 </div>
             </div>
         </div>
@@ -433,14 +521,14 @@
             <div class="community-section p-4">
                 <div class="row align-items-center">
                     <div class="col-lg-5">
-                        <img src="path/to/community-image.jpg" alt="DHIN Community" class="img-fluid rounded">
+                        <img src="{% static 'images/pic38.JPG' %}" alt="DHIN Community" class="img-fluid rounded" width="613" height="448">
                     </div>
                     <div class="col-lg-7 ps-lg-5 mt-4 mt-lg-0">
                         <h2>DHIN Community</h2>
                         <p class="my-4">A major benefit of being part of this network is the opportunity to engage in and contribute to thought leadership sessions. These sessions offer invaluable insights into the latest trends and developments in digital health, ensuring that your organization and members stay at the cutting edge of the industry.</p>
                         <div>
-                            <a href="#" class="btn btn-primary me-3">Register</a>
-                            <a href="#" class="btn btn-outline-primary">Learn more</a>
+                            <a href="{% url 'register_user' %}" class="btn btn-primary me-3"aria-label="Register for DHIN Community">Register</a>
+                            <a href="{% url 'services' %}" class="btn btn-outline-primary"aria-label="Learn more about DHIN Community">Learn more</a>
                         </div>
                     </div>
                 </div>
@@ -456,10 +544,11 @@
                 <!-- Newsletter Card 1 -->
                 <div class="col-md-4">
                     <div class="newsletter-card">
-                        <img src="path/to/newsletter1.jpg" alt="Newsletter 1">
-                        <div class="card-body">
+                        <img src="{% static 'images/pic18.JPG' %}" alt="Newsletter 1" class="img-fluid">
+                        <div class="card-body"><br>
                             <h5 class="card-title">Alliance with All Health Information Exchange Partners and Government</h5>
                             <p class="card-text">At the Digital Health Interoperability Network (DHIN), we are dedicated to accelerating universal health coverage through digital health interventions.</p>
+                            <small class="text-muted">Published on October 10, 2023 by DHIN Team</small>
                         </div>
                     </div>
                 </div>
@@ -467,10 +556,11 @@
                 <!-- Newsletter Card 2 -->
                 <div class="col-md-4">
                     <div class="newsletter-card">
-                        <img src="path/to/newsletter2.jpg" alt="Newsletter 2">
-                        <div class="card-body">
+                        <img src="{% static 'images/pic27.JPG' %}" alt="Newsletter 2" class="img-fluid">
+                        <div class="card-body"><br>
                             <h5 class="card-title">The Hidden Cost of Overlooking Interoperability in Health Care Systems</h5>
                             <p class="card-text">At the Digital Health Interoperability Network (DHIN), we are dedicated to accelerating universal health coverage through digital health interventions.</p>
+                            <small class="text-muted">Published on October 10, 2023 by DHIN Team</small>
                         </div>
                     </div>
                 </div>
@@ -478,10 +568,11 @@
                 <!-- Newsletter Card 3 -->
                 <div class="col-md-4">
                     <div class="newsletter-card">
-                        <img src="path/to/newsletter3.jpg" alt="Newsletter 3">
-                        <div class="card-body">
+                        <img src="{% static 'images/pic37.JPG' %}" alt="Newsletter 3" class="img-fluid" >
+                        <div class="card-body"><br>
                             <h5 class="card-title">Towards Connected Healthcare and Interoperability</h5>
                             <p class="card-text">At the Digital Health Interoperability Network (DHIN), we are dedicated to accelerating universal health coverage through digital health interventions.</p>
+                            <small class="text-muted">Published on October 10, 2023 by DHIN Team</small>
                         </div>
                     </div>
                 </div>
@@ -495,29 +586,29 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="dhin-logo.svg" alt="DHIN Logo">
+                        <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
                         <h2>DHIN</h2>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Quick Link</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About DHIN</a></li>
-                        <li><a href="#">DHIN Community</a></li>
+                    <ul class="footer-links" style="font-size: 8px !important;">
+                        <h3>Quick Link</h3>
+                        <li><a href="{% url 'about' %}">About DHIN</a></li>
+                        <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
                         <li><a href="#">Events</a></li>
-                        <li><a href="#">Global Standards</a></li>
-                        <li><a href="#">National Standards</a></li>
+                        <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
+                        <li><a href="{% url 'national_standards' %}">National Standards</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Policy Advocacy</a></li>
-                        <li><a href="#">Standardization</a></li>
-                        <li><a href="#">Integration</a></li>
-                        <li><a href="#">Collaboration</a></li>
+                        <h3>Services</h3>
+                        <li><a href="{% url 'services' %}">Policy Advocacy</a></li>
+                        <li><a href="{% url 'services' %}">Standardization</a></li>
+                        <li><a href="{% url 'services' %}">Integration</a></li>
+                        <li><a href="{% url 'services' %}">Collaboration</a></li>
                     </ul>
                 </div>
                 
@@ -532,12 +623,17 @@
                 
                 <div class="footer-section newsletter-section">
                     <h3>Subscribe to our Newsletter</h3>
-                    <form class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Your email here">
+                    <form class="newsletter-form" method="post" action="{% url 'subscribe_newsletter' %}">
+                        {% csrf_token %}
+                        <input type="email" name="email" class="newsletter-input" placeholder="Your email here" required>
                         <button type="submit" class="subscribe-btn">Subscribe</button>
                     </form>
+                    {% if success %}
+                        <p>Thank you for subscribing!</p>
+                    {% elif error %}
+                        <p>{{ error }}</p>
+                    {% endif %}
                 </div>
-            </div>
             
             <div class="footer-divider"></div>
             

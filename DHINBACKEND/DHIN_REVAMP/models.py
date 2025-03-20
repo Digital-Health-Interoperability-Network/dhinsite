@@ -1,36 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils import timezone
-
-# Create your models here.
-
+from django.utils.text import slugify
 
 class Newsletter(models.Model):
-    # Title of the newsletter
     title = models.CharField(max_length=255)
-    
-    # Description or summary of the newsletter's content
     description = models.TextField()
-    
-    # Date of the newsletter issue
     date_published = models.DateField()
-    
-    # The main body content of the newsletter
     content = models.TextField()
-
-    # Whether the newsletter is active or archived
     is_active = models.BooleanField(default=True)
-    
-    # An optional field to store the newsletter's cover image
     cover_image = models.ImageField(upload_to='newsletter_covers/', blank=True, null=True)
-
-    # A field to track the number of subscribers (could link to a Subscriber model if needed)
     num_subscribers = models.PositiveIntegerField(default=0)
-
-    # A slug field to create readable URLs for the newsletters
     slug = models.SlugField(unique=True)
-
-    # Creation and update timestamps for the newsletter
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -44,25 +25,15 @@ class Newsletter(models.Model):
         ordering = ['-date_published']
 
 
-
-
 class ContactUs(models.Model):
-    full_name = models.CharField(max_length=255)  # User's full name
-    email = models.EmailField()  # User's email address
-    message = models.TextField()  # The actual message sent by the user
-    
-    
+    full_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    message = models.TextField()
 
     def __str__(self):
         return f"Contact Us - {self.full_name} ({self.email} {self.message})"
 
-    
 
-
-    
-
-
-# Define the possible choices for the occupation field
 OCCUPATION_CHOICES = [
     ('Healthcare Professionals', 'Healthcare Professionals'),
     ('Technology Innovators', 'Technology Innovators'),
@@ -71,7 +42,6 @@ OCCUPATION_CHOICES = [
     ('Students and Digital Health Enthusiasts', 'Students and Digital Health Enthusiasts'),
     ('Interns', 'Interns'),
 ]
-
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
@@ -90,14 +60,12 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser):
-    email = models.EmailField(unique=True)  # Unique email address
-    username = models.CharField(max_length=30, unique=True)  # Unique username
+    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=30, unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    phone_number = models.CharField(max_length=15, blank=True, null=True)  # Optional phone number
-    occupation = models.CharField(
-        max_length=50, choices=OCCUPATION_CHOICES, blank=True, null=True
-    )  # Optional occupation field with choices (dropdown)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    occupation = models.CharField(max_length=50, choices=OCCUPATION_CHOICES, blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -106,51 +74,43 @@ class CustomUser(AbstractBaseUser):
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'  # We are using email as the primary identifier for the user
-    REQUIRED_FIELDS = ['username']  # Email and username are required fields
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
-         return f"{self.email} | {self.first_name} {self.last_name} | {self.phone_number} | {self.occupation}"
-
+        return f"{self.email} | {self.first_name} {self.last_name} | {self.phone_number} | {self.occupation}"
 
 
 class Event(models.Model):
-    # Name of the event
     name = models.CharField(max_length=255)
-    
-    # Description of the event
     description = models.TextField()
-    
-    # Date and time when the event starts
     start_date = models.DateTimeField(default=timezone.now)
-    
-    # Date and time when the event ends
     end_date = models.DateTimeField(default=timezone.now)
-    
-    # Location where the event is held
     location = models.CharField(max_length=255)
-    
-    # Optional image for the event (for example, a banner image)
     image = models.ImageField(upload_to='event_images/', blank=True, null=True)
-    
-    # URL link for event registration or more details
     registration_url = models.URLField(blank=True, null=True)
-    
-    # Indicates if the event is active or canceled
     is_active = models.BooleanField(default=True)
-    
-    # Date when the event was created
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    # Date when the event was last updated
     updated_at = models.DateTimeField(auto_now=True)
-    
+    slug = models.SlugField(unique=True, blank=True)
+
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
-        # You can customize this to generate a detailed page for each event
         return f"/events/{self.id}/"
-    
+
     class Meta:
-        ordering = ['-start_date']  # Orders events by the start date (latest first)
+        ordering = ['-start_date']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Event, self).save(*args, **kwargs)
+
+
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)  # Ensure the email is unique
+
+    def __str__(self):
+        return self.email

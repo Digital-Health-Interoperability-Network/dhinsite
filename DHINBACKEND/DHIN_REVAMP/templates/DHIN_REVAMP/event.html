@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,14 +20,13 @@
         
         /* Navbar container */
         .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 5%;
-    background-color: rgb(233, 249, 255); /* Light blue background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 5%;
+            background-color: rgb(233, 249, 255); /* Light blue background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
         
         /* Logo styles */
         .logo {
@@ -51,7 +51,7 @@
         }
         
         .nav-link {
-            color: #333;
+            color: #011533;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
@@ -72,17 +72,35 @@
         /* Contact Us button */
         .contact-btn {
             padding: 0.5rem 1.5rem;
-            border: 1px solid #127c72;
+            border: 1px solid #005AFF;
             border-radius: 25px;
-            color: #127c72;
+            color: #005AFF;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
+            margin-right: 15px; /* Add margin to create space between contact button and search icon */
         }
         
         .contact-btn:hover {
-            background-color: #127c72;
+            background-color: #005AFF;
             color: white;
+        }
+        
+        /* Search icon styles */
+        .search-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .search-icon svg {
+            color: #005AFF;
+            stroke-width: 2;
+        }
+        
+        .search-icon:hover {
+            opacity: 0.8;
         }
         
         /* Footer styles */
@@ -251,11 +269,32 @@
                 gap: 1rem;
                 text-align: center;
             }
+            
+            /* Adjust nav elements in mobile view */
+            .navbar {
+                flex-wrap: wrap;
+            }
+            
+            .right-nav {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+            
+            .contact-btn {
+                margin-right: 10px;
+            }
         }
         
         @media screen and (min-width: 769px) {
             .hamburger {
                 display: none;
+            }
+            
+            /* Group the contact button and search icon */
+            .right-nav {
+                display: flex;
+                align-items: center;
             }
         }
     </style>
@@ -264,9 +303,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-                <img src="{% static 'images/dhinlogo.png' %}" alt="Website Logo">
-            </div>
-            
+            <img src="{% static 'images/dhinlogo.png' %}" alt="Website Logo">
         </div>
         
         <ul class="nav-menu">
@@ -287,7 +324,15 @@
             </li>
         </ul>
         
-        <a href="/contact" class="contact-btn">Contact Us</a>
+        <div class="right-nav">
+            <a href="/contact" class="contact-btn">Contact Us</a>
+            <div class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+        </div>
         
         <div class="hamburger">
             <span class="hamburger-line"></span>
@@ -306,7 +351,7 @@
         <div class="footer-content">
             <div class="footer-column">
                 <div class="footer-logo">
-                    <img src="https://via.placeholder.com/120x60/002856/ffffff?text=DHIN" alt="DHIN Logo" height="60">
+                    <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo" height="98">
                 </div>
             </div>
             

@@ -1,26 +1,34 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views  # ✅ Import views once (no need to import specific functions)
-from .views import NewsletterViewSet, CustomUserViewSet, ContactUsViewSet, EventViewSet
-
-
+from .views import NewsletterViewSet, CustomUserViewSet, ContactUsViewSet, EventViewSet, NewsletterSubscriberCreateView
+from .views import (
+    newsletter_list,
+    newsletter_detail,
+    newsletter_create,
+    newsletter_update,
+    newsletter_delete,
+    ContactUsCreateView,
+    CustomUserListView,
+    EventListView,
+    event_detail,
+    subscribe_newsletter,
+    register_user
+    
+)
 
 # API Router for DRF ViewSets
 router = DefaultRouter()
-router.register(r'newsletters', NewsletterViewSet)
-router.register(r'users', CustomUserViewSet)
-router.register(r'contacts', ContactUsViewSet)
-router.register(r'events', EventViewSet)
-
-
-urlpatterns = router.urls
-
+router.register(r'newsletters', views.NewsletterViewSet)
+router.register(r'users', views.CustomUserViewSet)
+router.register(r'events', views.EventViewSet)
+router.register(r'contact', views.ContactUsViewSet)
 
 
 urlpatterns = [
     # Basic Pages
-    path('', views.home, name='home'),  # Homepage URL
-    path('about/', views.about, name='about'),  # About page
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
     path('dhin-community/', views.dhin_community, name='dhin_community'),
     path('services/', views.services, name='services'),
     path('standards/', views.standards, name='standards'),
@@ -29,25 +37,30 @@ urlpatterns = [
     path('emeka/', views.emeka, name='emeka'),
     path('julite/', views.julite, name='julite'),
     path('dr-iniobong/', views.dr_iniobong, name='dr_iniobong'),
-
     
-    # Newsletter API Endpoints
-    #path('newsletters/', views.newsletter_list, name='newsletter_list'),
-    #path('newsletter/<slug:slug>/', views.newsletter_detail, name='newsletter_detail'),
-    path('newsletter/create/', views.create_newsletter, name='create_newsletter'),
-    path('newsletter/update/<slug:slug>/', views.update_newsletter, name='update_newsletter'),
 
-    # User API Endpoints
-    path('register/', views.register_user, name='register_user'),
-    path('profile/update/', views.update_profile, name='update_profile'),
+    # Newsletter Traditional Views
+    path('newsletters/', newsletter_list, name='newsletter_list'),
+    path('newsletters/create/', newsletter_create, name='newsletter_create'),
+    path('newsletters/<slug:slug>/', newsletter_detail, name='newsletter_detail'),
+    path('newsletters/<slug:slug>/update/', newsletter_update, name='newsletter_update'),
+    path('newsletters/<slug:slug>/delete/', newsletter_delete, name='newsletter_delete'),
 
-    # Event API Endpoints
-    path('events/', views.event_list, name='event_list'),
-    path('event/<slug:slug>/', views.event_detail, name='event_detail'),
+    # Users
+    path('users/', CustomUserListView.as_view(), name='user_list'),
+    path('users/register/', register_user, name='register_user'),
 
-    # Contact API
-    path('contact/', views.contact_us_view, name='contact_us_view'),
+    # Events
+    path('events/', EventListView.as_view(), name='event_list'),
+    path('events/<slug:slug>/', event_detail, name='event_detail'),
 
-    # Include Router URLs (if using ViewSets)
-    path('api/', include(router.urls)),  # ✅ Ensure router URLs are included
+    # Contact Us
+    path('contact/', ContactUsCreateView.as_view(), name='contact_us'),
+
+    # URL for the newsletter subscription form
+    path('subscribe/', subscribe_newsletter, name='subscribe_newsletter'),
+    
+
+    # DRF API Router
+    path('api/', include(router.urls)),
 ]
