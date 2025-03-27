@@ -1,19 +1,22 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views  # ✅ Import views once (no need to import specific functions)
-from .views import NewsletterViewSet, CustomUserViewSet, ContactUsViewSet, EventViewSet, NewsletterSubscriberCreateView
+from .views import NewsletterViewSet, CustomUserViewSet, ContactViewSet, EventViewSet, NewsletterSubscriberCreateView
+from django.views.generic import TemplateView
+from django.views.generic import TemplateView
 from .views import (
     newsletter_list,
     newsletter_detail,
     newsletter_create,
     newsletter_update,
     newsletter_delete,
-    ContactUsCreateView,
     CustomUserListView,
     EventListView,
     event_detail,
     subscribe_newsletter,
-    register_user
+    register_user,
+    contact
+    
     
 )
 
@@ -22,10 +25,14 @@ router = DefaultRouter()
 router.register(r'newsletters', views.NewsletterViewSet)
 router.register(r'users', views.CustomUserViewSet)
 router.register(r'events', views.EventViewSet)
-router.register(r'contact', views.ContactUsViewSet)
+router.register(r'contacts', ContactViewSet)
 
 
 urlpatterns = [
+        # DRF API Router
+    path('api/', include(router.urls)),
+    
+    
     # Basic Pages
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
@@ -55,12 +62,12 @@ urlpatterns = [
     path('events/<slug:slug>/', event_detail, name='event_detail'),
 
     # Contact Us
-    path('contact/', ContactUsCreateView.as_view(), name='contact_us'),
+    path('contact/', contact, name='contact'),
 
     # URL for the newsletter subscription form
     path('subscribe/', subscribe_newsletter, name='subscribe_newsletter'),
     
 
-    # DRF API Router
-    path('api/', include(router.urls)),
+
+    
 ]

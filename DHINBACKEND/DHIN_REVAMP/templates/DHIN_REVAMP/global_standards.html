@@ -7,91 +7,30 @@
     <title>Digital Health Interoperability Network</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <!-- Google Fonts for Footer -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
+    
     <style>
         :root {
-            --primary-color: #2d70b3;
-            --secondary-color: #f8f9fa;
+            --primary-color: #012862;
+            --secondary-color: #faf8f9;
         }
         
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+           .btn-outline-light {
+           color: white !important;
+           border-color: #005AFF !important;
+           height: 40px;
+           width: 110px;
+           
         }
-        
-        .navbar {
-            padding: 15px 0;
+
+           .btn-outline-light:hover {
+            background-color: #005AFF !important;
+            color: white !important;
         }
-        
-        .navbar-brand img {
-            height: 40px;
-        }
-        
-        .hero-carousel {
-            position: relative;
-        }
-        
-        .carousel-item {
-            height: 724px; /* Updated height */
-        }
-        
-        .carousel-item img {
-            height: 100%;
-            width: 1314px; /* Set specific width */
-            object-fit: cover;
-        }
-        
-        .carousel-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Dark overlay with gradient */
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            transform: translateY(-50%);
-            z-index: 10; /* Make sure this is higher than the overlay */
-            color: white;
-            max-width: 600px;
-        }
-        
-        /* Hide the carousel control buttons */
-        .carousel-control-prev, .carousel-control-next {
-            display: none;
-        }
-        
-        .services-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            transition: transform 0.3s;
-        }
-        
-        .services-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .services-card img {
-            height: 200px;
-            object-fit: cover;
-            width: 100%;
-        }
-        
-        .services-card .card-body {
-            padding: 20px;
-        }
-        
+
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
@@ -101,84 +40,129 @@
         
         .btn-outline-primary {
             color: var(--primary-color);
-            border-color: var(--primary-color);
+            border-color: #005AFF;
             padding: 8px 24px;
             border-radius: 5px;
         }
-        
-        .section-title {
-            margin-bottom: 40px;
-            text-align: center;
+
+
+            body {
+            background-color:rgb(233, 249, 255) ;
+            color: black;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+
+            p {
+            color: #0d0f11; /* Slightly lighter blue color */
+            font-size: 16px; /* Font size */
+
+             /* Specific styles for h1 */
+            h1 {
+            color: #012862 ;
+            font-size: 25px; /* Larger font size for h1 */
+            font-weight: medium; /* Bold text */
+            }
+            }
+            
+            
         }
-        
-        .community-section {
-            background-color: var(--secondary-color);
-            padding: 50px 0;
-            border-radius: 15px;
+
+        .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.right-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* space between nav links and right-nav */
+}
+
+/* Keep your existing .right-nav styles */
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.contact-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #005AFF;
+    border-radius: 25px;
+    color: #005AFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+
+.contact-btn:hover {
+    background-color: #0b75ff;
+    color: white;
+    border-color: #0b75ff; /* Optional: change border color to match */
+}
+
+.search-icon {
+    cursor: pointer;
+}
+
+.search-icon svg {
+    stroke: #005AFF;
+    transition: stroke 0.3s;
+}
+
+.search-icon:hover svg {
+    stroke: #003f99;
+}
+
+.search-input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+.nav-link {
+    color: #011533;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #005AFF;
+}
+
+.navbar-brand img {
+    height: 98px;
+    width: 98px;
+}
+
+
+h1 {
+            color: #012862;
+            font-size: 30px;
+            font-weight: bold;
         }
-        
-        .newsletter-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-        }
-        
-        .newsletter-card img {
-            height: 200px;
-            object-fit: cover;
-            width: 100%;
-        }
-        
-        .carousel-indicators [data-bs-target] {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 6px;
-        }
-        
-        /* Search form styles */
-        .search-form {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        
-        .search-input {
-            padding: 8px 16px;
-            padding-right: 40px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            background-color: white;
-            transition: all 0.3s;
-            width: 180px;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(45, 112, 179, 0.25);
-            width: 220px;
-        }
-        
-        .search-button {
-            position: absolute;
-            right: 10px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #6c757d;
-        }
-        
-        .search-button:hover {
-            color: var(--primary-color);
-        }
+             h2{
+                color: #012862;
+                font-size: 20px;
+                font-weight: medium;
+             }
+         .container
+         {
+            margin-bottom: 50px;
+            margin-top: 10px;
+         }
         
         /* Footer styles from paste.txt */
         .footer {
             background-color: #002a5c;
             color: #ffffff;
-            padding: 50px 0 20px;
+            padding: 30px 0 20px;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -194,22 +178,22 @@
         }
 
         .footer-logo img {
-            height: 60px;
+            height: 98px;
         }
 
         .footer-section {
             min-width: 150px;
+            text-align: left; 
         }
 
         .footer-section h3 {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 20px;
         }
 
         .footer-links {
             list-style: none;
-            padding-left: 0;
         }
 
         .footer-links li {
@@ -219,7 +203,7 @@
         .footer-links a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 12px;
             transition: opacity 0.3s;
         }
 
@@ -265,33 +249,35 @@
             background-color: #0064e5;
         }
 
-        .footer-divider {
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.1);
-            margin: 30px 0;
-        }
-
         .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: right;
+            flex-wrap: wrap;
         }
-
+        
         .copyright {
-            font-size: 14px;
+            margin-right: 40rem;
         }
-
+        
         .social-icons {
             display: flex;
-            gap: 15px;
+            justify-content: flex-end;
+            gap: 1rem;
         }
-
+        
         .social-icon {
-            color: #ffffff;
+            color: white;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 1.2rem;
+            transition: opacity 0.3s;
         }
-
+        
+        .social-icon:hover {
+            opacity: 0.8;
+        }
         @media (max-width: 768px) {
             .footer-content {
                 flex-direction: column;
@@ -307,130 +293,179 @@
                 gap: 20px;
             }
             
-            .search-form {
-                margin-top: 15px;
-                width: 100%;
-            }
-            
-            .search-input {
-                width: 100%;
-            }
-            
-            .search-input:focus {
-                width: 100%;
-            }
+
+         
+
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="path/to/logo.png" alt="DHIN Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About DHIN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Newsletter</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url 'standards' %}" id="standardsDropdown" role="button" data-bs-toggle="dropdown">
-                            Standards
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a></li>
-                            <li><a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="ms-3">
-                    <a href="#" class="btn btn-outline-primary">Contact Us</a>
+     <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
+        </a>
+        <!-- Menu + Buttons grouped together -->
+        <div class="right-group">
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="{% url 'home' %}" >Home</b></a></li>
+               <li><a class="nav-link" href="{% url 'about' %}">About DHIN</a></li>
+                <li><a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a></li>
+                <li><a class="nav-link" href="{% url 'event_list' %}">Event</a></li>
+                <li><a class="nav-link" href="{% url 'newsletter_list' %}">Newsletter</a></li>
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <!-- Parent link to Standards page -->
+                    <a class="nav-link" href="{% url 'standards' %}"><b style="color: #005AFF; font-size: 18px;">
+                        Standards</b>
+                    </a>
+                    <!-- Separate toggle for dropdown -->
+                    <a class="nav-link dropdown-toggle ps-1" href="#" id="standardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                
+                    <!-- The dropdown -->
+                    <ul class="dropdown-menu" aria-labelledby="standardsDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                </li>
+                    </ul>
+                </li>
+            </ul>
+            
+                </li>
+            </ul>
+            <div class="right-nav">
+                <a href="/contact" class="contact-btn">Contact Us</a>
+                <div class="search-icon" id="searchToggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                 </div>
-                <!-- Search Bar Added Here -->
-                <div class="ms-3">
-                    <form class="search-form" action="/search" method="GET">
-                        <input type="text" class="search-input" placeholder="Search..." name="q">
-                        <button type="submit" class="search-button">
-                            <i class="bi bi-search"></i>
-                        </button>
+
+                  <!-- Hidden Search Input -->
+                    <form id="searchForm" action="/search/" method="get" style="display: none; margin-left: 10px;">
+                    <input type="text" name="q" placeholder="Search..." class="search-input">
                     </form>
                 </div>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section with Carousel -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="fw-bold">DIGITAL HEALTH<br>INTEROPERABILITY NETWORK</h1>
-            <p class="my-4">Empowering business healthcare and bringing innovations through the Digital Health Interoperability Network</p>
-            <div class="mt-4">
-                <a href="#" class="btn btn-primary me-3">Register</a>
-                <a href="#" class="btn btn-outline-light">Learn More</a>
-            </div>
-        </div>
+    </div>
+</nav>
         
-        <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="C:\Users\FutureFit1\Downloads\4960dd2e-398e-4c3f-901e-72a250f3a1b0.JPG" class="d-block w-100" alt="DHIN Hero Image 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="C:\Users\FutureFit1\Downloads\DSC03344.JPG" class="d-block w-100" alt="DHIN Hero Image 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="path/to/hero-image3.jpg" class="d-block w-100" alt="DHIN Hero Image 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="path/to/hero-image4.jpg" class="d-block w-100" alt="DHIN Hero Image 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="path/to/hero-image5.jpg" class="d-block w-100" alt="DHIN Hero Image 5">
-                </div>
-            </div>
-            <!-- Navigation buttons removed as requested -->
-        </div>
-    </section>
+            
 
-    <!-- Services Section -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="row g-4">
-                <!-- Service Card 1 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="services-card">
-                        <img src="path/to/policy-image.jpg" alt="Policy Advocacy">
-                        <div class="card-body">
-                            <h5 class="card-title">Policy Advocacy</h5>
-                            <p class="card-text">At DHIN, we advocate for policy plans for improved interoperability in healthcare.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
+     <!-- Page content -->
+     <main>
+        <div class="container-fluid standards-section">
+            <div class="container">
+                <h1 class="text-center section-title py-5">GLOBAL STANDARDS</h1>
+            <p class=" ">Countries are encouraged to use open standards for health data exchange. Standard means that it has a common schema for health data, calculations, and information exchange, and open means that different countries and providers can access and use them, instead of countries each developing their own. Open standards that have emerged in the health sector, include these:
+                Digital Imaging and Communications in Medicine (DICOM):DICOM is the international standard to transmit, store, retrieve, print, process, and display medical imaging information.
+                Fast Healthcare Interoperability Resource (FHIR):FHIR, based on HL7, is an interoperability standard intended to facilitate the exchange of healthcare information between healthcare providers, patients, caregivers, payers, researchers, and anyone else involved in the healthcare ecosystem. It consists of 2 main parts – a content model in the form of ‘resources’, and a specification for the exchange of these resources.
+                Health Level Seven (HL7):HL7 is a comprehensive framework and related standards for the exchange, integration, sharing, and retrieval of electronic health information that supports clinical practice and the management, delivery and evaluation of health services. "Level Seven" refers to the seventh level of the International Organization for Standardization’s seven-layer communications model for open systems interconnection.
+                International Classification of Diseases (ICD):ICD is the international standard for the systematic recording, reporting, analysis, interpretation and comparison of mortality and morbidity data.
+                International Classification of Health Interventions (ICHI):ICHI is a common tool for reporting and analyzing health interventions for clinical and statistical purposes. ICHI covers interventions carried out by a broad range of providers across the full scope of health systems.
+                Logical Observation Identifiers Names and Codes (LOINC):LOINC is an international standard for identifying health measurements, observations, and documents.
+                Systematized Nomenclature of Medicine Clinical Terms (SNOMED CT):SNOMED- CT is a set of standards for a codified language that represents groups of clinical terms. This enables healthcare information to be exchanged globally for the benefit of patients and other stakeholders.
+                Internation Standards Organization ISO TC215:A range of Health Informatics standards authored or adopted by the Technical Committee of the ISO.
+            </p>
+        </div>
+    </main>
+
+
+
+
+    <!-- This is your footer -->
+   
+   <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
+                    <h2>DHIN</h2>
                 </div>
-                
-                <!-- Service Card 2 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="services-card">
-                        <img src="path/to/standardization-image.jpg" alt="Standardization">
-                        <div class="card-body">
+            </div>
+            
+            <div class="footer-section">
+                <ul class="footer-links" style="font-size: 8px !important;">
+                    <h3>Quick Link</h3>
+                    <li><a href="{% url 'about' %}">About DHIN</a></li>
+                    <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
+                    <li><a href="{% url 'national_standards' %}">National Standards</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <ul class="footer-links">
+                    <h3>Services</h3>
+                    <li><a href="{% url 'services' %}">Policy Advocacy</a></li>
+                    <li><a href="{% url 'services' %}">Standardization</a></li>
+                    <li><a href="{% url 'services' %}">Integration</a></li>
+                    <li><a href="{% url 'services' %}">Collaboration</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <ul class="footer-links"> 
+                    <h3>Connect with us</h3>   
+                    <li><a href="https://www.linkedin.com/company/dhin-hie/">LinkedIn</a></li>
+                    <li><a href="https://x.com/dhinNetwork">Twitter</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section newsletter-section">
+                <h3>Subscribe to our Newsletter</h3>
+                <form class="newsletter-form" method="post" action="{% url 'subscribe_newsletter' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="newsletter-input" placeholder="Your email here" required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+                {% if success %}
+                    <p>Thank you for subscribing!</p>
+                {% elif error %}
+                    <p>{{ error }}</p>
+                {% endif %}
+            </div>
+        
+       
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 Digital Health Interoperability Network | All Rights Reserved
+            </div>
+            <div class="social-icons">
+                <a href="https://x.com/dhinNetwork" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/dhin-hie/" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('searchToggle').addEventListener('click', function() {
+        const searchForm = document.getElementById('searchForm');
+        if (searchForm.style.display === 'none') {
+            searchForm.style.display = 'block';
+        } else {
+            searchForm.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

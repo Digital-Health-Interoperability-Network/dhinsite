@@ -4,201 +4,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DHIN - Digital Health Interoperability Network</title>
+    <title>Digital Health Interoperability Network</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts for Footer -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    
     <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #012862;
+            --secondary-color: #faf8f9;
         }
         
-        body {
+    
+           .btn-outline-light {
+           color: white !important;
+           border-color: #005AFF !important;
+           height: 40px;
+           width: 110px;
+           
+        }
+
+           .btn-outline-light:hover {
+            background-color: #005AFF !important;
+            color: white !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 8px 24px;
+            border-radius: 5px;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: #005AFF;
+            padding: 8px 24px;
+            border-radius: 5px;
+        }
+
+
+            body {
+            background-color:rgb(233, 249, 255) ;
+            color: black;
             font-family: Arial, sans-serif;
             line-height: 1.6;
+
+            p {
+            color: #0d0f11; /* Slightly lighter blue color */
+            font-size: 16px; /* Font size */
+
+             /* Specific styles for h1 */
+            h1 {
+            color: #012862 ;
+            font-size: 25px; /* Larger font size for h1 */
+            font-weight: medium; /* Bold text */
+            }
+            }
+            
+            
         }
-        
-        /* Navbar container */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 5%;
-            background-color: rgb(233, 249, 255); /* Light blue background */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+        .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.right-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* space between nav links and right-nav */
+}
+
+/* Keep your existing .right-nav styles */
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.contact-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #005AFF;
+    border-radius: 25px;
+    color: #005AFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+
+.contact-btn:hover {
+    background-color: #0b75ff;
+    color: white;
+    border-color: #0b75ff; /* Optional: change border color to match */
+}
+
+.search-icon {
+    cursor: pointer;
+}
+
+.search-icon svg {
+    stroke: #005AFF;
+    transition: stroke 0.3s;
+}
+
+.search-icon:hover svg {
+    stroke: #003f99;
+}
+
+.search-input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+.nav-link {
+    color: #011533;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #005AFF;
+}
+
+.navbar-brand img {
+    height: 98px;
+    width: 98px;
+}
+
+h1 {
+            color: #012862;
+            font-size: 30px;
+            font-weight: bold;
         }
-        
-        /* Logo styles */
-        .logo {
-            display: flex;
-            align-items: center;
+             h2{
+                color: #012862;
+                font-size: 20px;
+                font-weight: medium;
+             }
+.custom-img-1 {
+            width: 340px;
+            height: 398px;
+            object-fit: cover;
+            margin-bottom: 40PX;
+            max-width: 100%;
         }
-        
-        .logo img {
-            height: 98px;
-            width: 98;
+        .custom-img-2 {
+            width: 600px;
+            height: 398px;
+            object-fit: cover;
+            margin-bottom: 40PX;
+            max-width: 100%;
         }
-        
-        /* Navigation menu */
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
-        .nav-link {
-            color: #011533;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: #127c72; /* DHIN teal color */
-        }
-        
-        /* Dropdown indicator */
-        .dropdown-icon {
-            display: inline-block;
-            margin-left: 5px;
-            transition: transform 0.3s;
-        }
-        
-        /* Contact Us button */
-        .contact-btn {
-            padding: 0.5rem 1.5rem;
-            border: 1px solid #005AFF;
-            border-radius: 25px;
-            color: #005AFF;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            margin-right: 15px; /* Add margin to create space between contact button and search icon */
-        }
-        
-        .contact-btn:hover {
-            background-color: #005AFF;
-            color: white;
-        }
-        
-        /* Search icon styles */
-        .search-icon {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .search-icon svg {
-            color: #005AFF;
-            stroke-width: 2;
-        }
-        
-        .search-icon:hover {
-            opacity: 0.8;
-        }
-        
-        /* Footer styles */
-        .footer {
-            background-color: #002856; /* DHIN dark blue */
-            color: white;
-            padding: 3rem 5%;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-logo {
-            margin-bottom: 1rem;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-link {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-link a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-link a:hover {
-            opacity: 0.8;
-        }
-        
-        .newsletter-form {
-            margin-top: 1rem;
-            display: flex;
+        .custom-img-3 {
+            width: 340px;
+            height: 398px;
+            object-fit: cover;
+            margin-bottom: 40PX;
             max-width: 100%;
         }
         
-        .newsletter-input {
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+        .standards-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+        .section-title {
+            
+            margin-bottom: 30px;
         }
         
+        /* Footer styles from paste.txt */
+        .footer {
+            background-color: #002a5c;
+            color: #ffffff;
+            padding: 30px 0 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 98px;
+        }
+
+        .footer-section {
+            min-width: 150px;
+            text-align: left; 
+        }
+
+        .footer-section h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .newsletter-section {
+            min-width: 300px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background-color: #001e42;
+            color: #ffffff;
+            outline: none;
+        }
+
         .newsletter-input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
-        
-        .newsletter-btn {
-            padding: 0.8rem 1.5rem;
-            background-color: #1D7AF8; /* Blue button */
-            color: white;
+
+        .subscribe-btn {
+            padding: 12px 20px;
+            background-color: #0b75ff;
+            color: #ffffff;
             border: none;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
+            font-weight: 600;
             transition: background-color 0.3s;
         }
-        
-        .newsletter-btn:hover {
-            background-color: #1565c0;
+
+        .subscribe-btn:hover {
+            background-color: #0064e5;
         }
-        
+
         .footer-bottom {
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: right;
             flex-wrap: wrap;
         }
         
         .copyright {
-            margin-right: 1rem;
+            margin-right: 40rem;
         }
         
         .social-icons {
             display: flex;
+            justify-content: flex-end;
             gap: 1rem;
         }
         
@@ -212,217 +302,202 @@
         .social-icon:hover {
             opacity: 0.8;
         }
-        
-        /* Responsive styles */
-        @media screen and (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                padding: 1rem;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                z-index: 999;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .hamburger {
-                display: block;
-                cursor: pointer;
-            }
-            
-            .hamburger-line {
-                display: block;
-                width: 25px;
-                height: 3px;
-                margin: 5px 0;
-                background-color: #333;
-                transition: all 0.3s;
-            }
-            
+        @media (max-width: 768px) {
             .footer-content {
                 flex-direction: column;
+                gap: 40px;
             }
             
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-input {
-                border-radius: 4px;
-                margin-bottom: 0.5rem;
-            }
-            
-            .newsletter-btn {
-                border-radius: 4px;
+            .newsletter-section {
                 width: 100%;
             }
             
             .footer-bottom {
                 flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                gap: 20px;
             }
             
-            /* Adjust nav elements in mobile view */
-            .navbar {
-                flex-wrap: wrap;
-            }
-            
-            .right-nav {
-                margin-left: auto;
-                display: flex;
-                align-items: center;
-            }
-            
-            .contact-btn {
-                margin-right: 10px;
-            }
-        }
-        
-        @media screen and (min-width: 769px) {
-            .hamburger {
-                display: none;
-            }
-            
-            /* Group the contact button and search icon */
-            .right-nav {
-                display: flex;
-                align-items: center;
-            }
+
+         
+
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="{% static 'images/dhinlogo.png' %}" alt="Website Logo">
-        </div>
-        
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="/about" class="nav-link">About DHIN</a>
-            </li>
-            <li class="nav-item">
-                <a href="/community" class="nav-link">DHIN Community</a>
-            </li>
-            <li class="nav-item">
-                <a href="/event" class="nav-link">Event</a>
-            </li>
-            <li class="nav-item">
-                <a href="/newsletter" class="nav-link">Newsletter</a>
-            </li>
-            <li class="nav-item">
-                <a href="/standards" class="nav-link">Standards <span class="dropdown-icon">▼</span></a>
-            </li>
-        </ul>
-        
-        <div class="right-nav">
-            <a href="/contact" class="contact-btn">Contact Us</a>
-            <div class="search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
+     <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
+        </a>
+        <!-- Menu + Buttons grouped together -->
+        <div class="right-group">
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="{% url 'home' %}" >Home</b></a></li>
+                <li><a class="nav-link" href="{% url 'about' %}">About DHIN</a></li>
+                <li><a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a></li>
+                <li><a class="nav-link" href="{% url 'event_list' %}">Event</a></li>
+                <li><a class="nav-link" href="{% url 'newsletter_list' %}">Newsletter</a></li>
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <!-- Parent link to Standards page -->
+                    <a class="nav-link" href="{% url 'standards' %}"><b style="color: #005AFF; font-size: 18px;">
+                        Standards</b>
+                    </a>
+                    <!-- Separate toggle for dropdown -->
+                    <a class="nav-link dropdown-toggle ps-1" href="#" id="standardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                
+                    <!-- The dropdown -->
+                    <ul class="dropdown-menu" aria-labelledby="standardsDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                </li>
+                    </ul>
+                </li>
+            </ul>
+            
+                </li>
+            </ul>
+            <div class="right-nav">
+                <a href="/contact" class="contact-btn">Contact Us</a>
+                <div class="search-icon" id="searchToggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+
+                  <!-- Hidden Search Input -->
+                    <form id="searchForm" action="/search/" method="get" style="display: none; margin-left: 10px;">
+                    <input type="text" name="q" placeholder="Search..." class="search-input">
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
+</nav>
         
-        <div class="hamburger">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </div>
-    </nav>
+            
 
-    <!-- Main Content Area -->
-    <main>
-        <!-- Your page content goes here -->
+     <!-- Page content -->
+     <main>
+        <div class="container-fluid standards-section">
+            <div class="container">
+                <h1 class="text-center section-title">Standards</h1>
+                <div class="row justify-content-center g-4">
+                    <div class="col-md-4 text-center">
+                        <img src="{% static 'images/pic56.JPG' %}" alt="Digital Health Standard 1" class="custom-img-1 img-fluid rounded shadow ">
+                        <h2>Global Standard</h2>
+                        <p class="mt-4">Embracing universally recognized digital health standards to ensure seamless interoperability and data exchange on a global scale.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="{% static 'images/pic57.JPG' %}" alt="Digital Health Standard 2" class="custom-img-2 img-fluid rounded shadow">
+                        <h2>Regional Standards</h2>
+                        <p class="mt-4">Implementing adaptable digital health standards that cater to specific regional healthcare needs, fosters efficient collaboration among neighboring healthcare ecosystems.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="{% static 'images/pic58.JPG' %}" alt="Digital Health Standard 3" class="custom-img-3 img-fluid rounded shadow">
+                        <h2>National Standards</h2>
+                        <p class="mt-4">Upholding nationally endorsed digital health standards will create a unified framework for healthcare data, strengthening the foundation of our healthcare infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+
+
+
+    <!-- This is your footer -->
+   
+   <footer class="footer">
+    <div class="container">
         <div class="footer-content">
-            <div class="footer-column">
+            <div class="footer-section">
                 <div class="footer-logo">
-                    <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo" height="98">
+                    <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
+                    <h2>DHIN</h2>
                 </div>
             </div>
             
-            <div class="footer-column">
-                <h3 class="footer-heading">Quick Link</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="/about">About DHIN</a></li>
-                    <li class="footer-link"><a href="/community">DHIN Community</a></li>
-                    <li class="footer-link"><a href="/events">Events</a></li>
-                    <li class="footer-link"><a href="/global-standards">Global Standards</a></li>
-                    <li class="footer-link"><a href="/national-standards">National Standards</a></li>
+            <div class="footer-section">
+                <ul class="footer-links" style="font-size: 8px !important;">
+                    <h3>Quick Link</h3>
+                    <li><a href="{% url 'about' %}">About DHIN</a></li>
+                    <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
+                    <li><a href="{% url 'national_standards' %}">National Standards</a></li>
                 </ul>
             </div>
             
-            <div class="footer-column">
-                <h3 class="footer-heading">Services</h3>
+            <div class="footer-section">
                 <ul class="footer-links">
-                    <li class="footer-link"><a href="/policy-advocacy">Policy Advocacy</a></li>
-                    <li class="footer-link"><a href="/standardization">Standardization</a></li>
-                    <li class="footer-link"><a href="/integration">Integration</a></li>
-                    <li class="footer-link"><a href="/collaboration">Collaboration</a></li>
+                    <h3>Services</h3>
+                    <li><a href="{% url 'services' %}">Policy Advocacy</a></li>
+                    <li><a href="{% url 'services' %}">Standardization</a></li>
+                    <li><a href="{% url 'services' %}">Integration</a></li>
+                    <li><a href="{% url 'services' %}">Collaboration</a></li>
                 </ul>
             </div>
             
-            <div class="footer-column">
-                <h3 class="footer-heading">Connect with us</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="https://facebook.com/dhin" target="_blank">Facebook</a></li>
-                    <li class="footer-link"><a href="https://linkedin.com/company/dhin" target="_blank">LinkedIn</a></li>
-                    <li class="footer-link"><a href="https://twitter.com/dhin" target="_blank">Twitter</a></li>
+            <div class="footer-section">
+                <ul class="footer-links"> 
+                    <h3>Connect with us</h3>   
+                    <li><a href="https://www.linkedin.com/company/dhin-hie/">LinkedIn</a></li>
+                    <li><a href="https://x.com/dhinNetwork">Twitter</a></li>
                 </ul>
             </div>
             
-            <div class="footer-column">
-                <h3 class="footer-heading">Subscribe to our Newsletter</h3>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Your email here">
-                    <button type="submit" class="newsletter-btn">Subscribe</button>
+            <div class="footer-section newsletter-section">
+                <h3>Subscribe to our Newsletter</h3>
+                <form class="newsletter-form" method="post" action="{% url 'subscribe_newsletter' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="newsletter-input" placeholder="Your email here" required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
+                {% if success %}
+                    <p>Thank you for subscribing!</p>
+                {% elif error %}
+                    <p>{{ error }}</p>
+                {% endif %}
             </div>
-        </div>
+        
+       
         
         <div class="footer-bottom">
             <div class="copyright">
                 © 2024 Digital Health Interoperability Network | All Rights Reserved
             </div>
             <div class="social-icons">
-                <a href="https://twitter.com/dhin" class="social-icon" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                    </svg>
+                <a href="https://x.com/dhinNetwork" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </a>
-                <a href="https://linkedin.com/company/dhin" class="social-icon" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
+                <a href="https://www.linkedin.com/company/dhin-hie/" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script>
-        // Mobile menu toggle functionality
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('searchToggle').addEventListener('click', function() {
+        const searchForm = document.getElementById('searchForm');
+        if (searchForm.style.display === 'none') {
+            searchForm.style.display = 'block';
+        } else {
+            searchForm.style.display = 'none';
+        }
+    });
+</script>
 </body>
 </html>

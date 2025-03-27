@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('DHIN_REVAMP.urls')),  # Routes the root URL to your app
-    path('api/', include('DHIN_REVAMP.urls')),  # Correct placement
+   
 ]
 
 # Serve media files in development

@@ -1,10 +1,10 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
-from .models import Newsletter, CustomUser, Event, ContactUs, NewsletterSubscriber
-from .serializers import NewsletterSubscriberSerializer, CustomUserSerializer, EventSerializer, ContactUsSerializer,  NewsletterSerializer
+from .models import Newsletter, CustomUser, Event, Contact, NewsletterSubscriber
+from .serializers import NewsletterSubscriberSerializer, CustomUserSerializer, EventSerializer, ContactSerializer,  NewsletterSerializer
 from django.shortcuts import render,  get_object_or_404, redirect
-from .forms import NewsletterForm, ContactUsForm,CustomUserForm,NewsletterSubscriberForm 
+from .forms import NewsletterForm, ContactForm,CustomUserForm,NewsletterSubscriberForm 
 from rest_framework.decorators import action
 from django.templatetags.static import static
 from rest_framework import generics
@@ -125,7 +125,7 @@ class CustomUserListView(View):
     def get(self, request):
         form = CustomUserForm()
         users = CustomUser.objects.all()
-        return render(request, 'register.html', {'users': users})
+        return render(request, 'DHIN_REVAMP/register_user.html', {'users': users})
 def register_user(request):
     if request.method == 'POST':
         form = CustomUserForm(request.POST)
@@ -142,25 +142,21 @@ def register_user(request):
 
 # API Viewsets for contactus
 
-class ContactUsViewSet(viewsets.ModelViewSet):
-    queryset = ContactUs.objects.all()
-    serializer_class = ContactUsSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
 
 
 # Traditional views for contactus
-class ContactUsCreateView(View):
-    def get(self, request):
-        form = ContactUsForm()
-        return render(request, 'DHIN_REVAMP/contact_us.html', {'form': form})
-
-    def post(self, request):
-        form = ContactUsForm(request.POST)
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contact_us_success')  # Redirect to a success page
-        return render(request, 'DHIN_REVAMP/contact_us.html', {'form': form})
-
+            return redirect('home')  # Redirect to home or success page
+    else:
+        form = ContactForm()
+    return render(request, 'DHIN_REVAMP/contact.html', {'form': form})
 
 
 

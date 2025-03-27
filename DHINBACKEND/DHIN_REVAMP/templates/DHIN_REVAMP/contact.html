@@ -140,112 +140,15 @@
     height: 98px;
     width: 98px;
 }
+
         
-        .hero-carousel {
-            position: relative;
-        }
-        
-        .carousel-item {
-            height: 726px; /* Updated height */
-        }
-        
-        .carousel-item img {
-            height: 100%;
-            width: 1310px; /* Set specific width */
-            object-fit: cover;
-        }
-        
-        .carousel-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Dark overlay with gradient */
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: absolute;
-            top: 70%;
-            left: 10%;
-            transform: translateY(-50%);
-            z-index: 10; /* Make sure this is higher than the overlay */
-            color: white;
-            max-width: 600px;
-        }
+   
         
         /* Hide the carousel control buttons */
         .carousel-control-prev, .carousel-control-next {
             display: none;
         }
-        
-        .services-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            transition: transform 0.3s;
-            padding: 10px;
-        }
-        
-        .services-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .services-card img {
-            height: 288px;
-            object-fit: cover;
-            width: 281%;
-            border-radius: 8px;
-        }
-        
-        .services-card .card-body {
-            padding: 20px;
-        }
-        
-        
-        
-        .section-title {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        
-        .community-section {
-            background-color: var(--secondary-color);
-            padding: 50px 0;
-            border-radius: 15px;
-        }
-        
-        .newsletter-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            padding: 10px;
-            
-        }
-        
-        .newsletter-card img {
-            height: 295px;
-            object-fit: cover;
-            width: 368%;
-            border-radius: 8px;
-            
-        }
-
-        .newsletter-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .carousel-indicators [data-bs-target] {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 6px;
-        }
-        
+      
         /* Footer styles from paste.txt */
         .footer {
             background-color: #002a5c;
@@ -397,11 +300,10 @@
         <!-- Menu + Buttons grouped together -->
         <div class="right-group">
             <ul class="nav-menu">
-                <li><a class="nav-link" href="{% url 'home' %}" >Home</b></a></li>
                 <li><a class="nav-link" href="{% url 'about' %}">About DHIN</a></li>
                 <li><a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a></li>
                 <li><a class="nav-link" href="{% url 'event_list' %}">Event</a></li>
-                <li><a class="nav-link" href="{% url 'newsletter_list' %}"><b style="color: #005AFF; font-size: 18px;">Newsletter</b></a></li>
+                <li><a class="nav-link" href="{% url 'newsletter_list' %}">Newsletter</a></li>
                 <li class="nav-item dropdown d-flex align-items-center">
                     <!-- Parent link to Standards page -->
                     <a class="nav-link" href="{% url 'standards' %}">
@@ -415,7 +317,6 @@
                         <li>
                             <a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a>
                         </li>
-                        <li><a class="nav-link" href="{% url 'home' %}" >Home</b></a></li>
                         <li>
                             <a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a>
                         </li>
@@ -430,7 +331,7 @@
                 </li>
             </ul>
             <div class="right-nav">
-                <a href="/contact" class="contact-btn">Contact Us</a>
+                <a href="{% url 'contact' %}" class="contact-btn">Contact Us</a>
                 <div class="search-icon" id="searchToggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -452,7 +353,19 @@
 
      <!-- Page content -->
      <main>
-        {% block content %}{% endblock %}
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="contactForm">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+       
+        
     </main>
 
 
@@ -543,5 +456,53 @@
         }
     });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the modal and buttons
+    var modal = document.getElementById("contactModal");
+    var closeBtn = document.querySelector(".close");
+    var contactForm = document.getElementById("contactForm");
+
+    // Show modal when the page loads (if needed)
+    function showModal() {
+        modal.style.display = "block";
+    }
+
+    // Hide modal when clicking on the close button
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Handle form submission with AJAX
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();  // Prevent default form submission
+
+        var formData = new FormData(contactForm);
+
+        fetch("{% url 'contact' %}", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();  // If API, return JSON
+            } else {
+                throw new Error("Form submission failed.");
+            }
+        })
+        .then(data => {
+            alert("Message sent successfully! Redirecting...");
+            window.location.href = "/";  // ✅ Redirect to Home page
+        })
+        .catch(error => {
+            alert("Error: " + error.message);
+        });
+    });
+});
+</script>
+
 </body>
 </html>

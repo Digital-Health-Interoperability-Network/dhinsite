@@ -1,5 +1,5 @@
 from django import forms
-from .models import Newsletter, CustomUser, ContactUs, NewsletterSubscriber
+from .models import Newsletter, CustomUser, Contact, NewsletterSubscriber
 
 # Define the possible choices for the occupation field
 OCCUPATION_CHOICES = [
@@ -28,9 +28,9 @@ class NewsletterForm(forms.ModelForm):
         return slug
 
 
-class ContactUsForm(forms.ModelForm):
+class ContactForm(forms.ModelForm):
     class Meta:
-        model = ContactUs
+        model = Contact
         fields = ['full_name', 'email', 'message']
     
     full_name = forms.CharField(label='Full Name', max_length=255, widget=forms.TextInput(attrs={'placeholder': 'Enter your full name'}))
