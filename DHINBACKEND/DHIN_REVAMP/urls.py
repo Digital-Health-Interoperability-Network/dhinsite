@@ -5,11 +5,7 @@ from .views import NewsletterViewSet, CustomUserViewSet, ContactViewSet, EventVi
 from django.views.generic import TemplateView
 from django.views.generic import TemplateView
 from .views import (
-    newsletter_list,
-    newsletter_detail,
-    newsletter_create,
-    newsletter_update,
-    newsletter_delete,
+    NewsletterDetailView, NewsletterListView,
     CustomUserListView,
     EventListView,
     event_detail,
@@ -47,12 +43,8 @@ urlpatterns = [
     
 
     # Newsletter Traditional Views
-    path('newsletters/', newsletter_list, name='newsletter_list'),
-    path('newsletters/create/', newsletter_create, name='newsletter_create'),
-    path('newsletters/<slug:slug>/', newsletter_detail, name='newsletter_detail'),
-    path('newsletters/<slug:slug>/update/', newsletter_update, name='newsletter_update'),
-    path('newsletters/<slug:slug>/delete/', newsletter_delete, name='newsletter_delete'),
-
+    path('newsletters/', NewsletterListView.as_view(), name='newsletter_list'),
+    path('newsletters/<slug:slug>/', NewsletterDetailView.as_view(), name='newsletter_detail'),
     # Users
     path('users/', CustomUserListView.as_view(), name='user_list'),
     path('users/register/', register_user, name='register_user'),

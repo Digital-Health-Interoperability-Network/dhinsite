@@ -11,19 +11,28 @@ class Newsletter(models.Model):
     is_active = models.BooleanField(default=True)
     cover_image = models.ImageField(upload_to='newsletter_covers/', blank=True, null=True)
     num_subscribers = models.PositiveIntegerField(default=0)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:  # Only generate slug if it's empty
+            base_slug = slugify(self.title)
+            slug = base_slug
+            counter = 1
+            while Newsletter.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return f"/newsletters/{self.slug}/"
 
     class Meta:
         ordering = ['-date_published']
-
 
 # CONTACT MODEL
 class Contact(models.Model):

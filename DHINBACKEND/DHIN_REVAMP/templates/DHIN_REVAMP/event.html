@@ -52,17 +52,6 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
 
-            p {
-            color: #0d0f11; /* Slightly lighter blue color */
-            font-size: 16px; /* Font size */
-
-             /* Specific styles for h1 */
-            h1 {
-            color: #012862 ;
-            font-size: 25px; /* Larger font size for h1 */
-            font-weight: medium; /* Bold text */
-            }
-            }
             
             
         }
@@ -140,111 +129,69 @@
     height: 98px;
     width: 98px;
 }
+h1 {
+                    color: #012862;
+                    font-size: 30px;
+                    font-weight: bold;
+                    }
+                     h2{
+                        color: #012862;
+                        font-size: 20px;
+                        font-weight: medium;
+                     }
         
-        .hero-carousel {
-            position: relative;
-        }
+                     p {
+                        color: #333;
+                        font-size: small;
+                     }
         
-        .carousel-item {
-            height: 726px; /* Updated height */
-        }
         
-        .carousel-item img {
-            height: 100%;
-            width: 1310px; /* Set specific width */
-            object-fit: cover;
-        }
-        
-        .carousel-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Dark overlay with gradient */
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: absolute;
-            top: 70%;
-            left: 10%;
-            transform: translateY(-50%);
-            z-index: 10; /* Make sure this is higher than the overlay */
-            color: white;
-            max-width: 600px;
-        }
-        
-        /* Hide the carousel control buttons */
-        .carousel-control-prev, .carousel-control-next {
-            display: none;
-        }
-        
-        .services-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            transition: transform 0.3s;
-            padding: 10px;
-        }
-        
-        .services-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .services-card img {
-            height: 288px;
-            object-fit: cover;
-            width: 281%;
+                     .section-title {
+                    text-align: center;
+                    margin-bottom: 4rem;
+                    }
+                    .section-container {
+                    padding: 1rem 1rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    text-align: center;
+                    }
+            .article-card {
+            border: none;
             border-radius: 8px;
-        }
-        
-        .services-card .card-body {
-            padding: 20px;
-        }
-        
-        
-        
-        .section-title {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        
-        .community-section {
-            background-color: var(--secondary-color);
-            padding: 50px 0;
-            border-radius: 15px;
-        }
-        
-        .newsletter-card {
-            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
-            padding: 10px;
+            }
+        
+            .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+        
+            .article-image {
+            height: 250px;
+            object-fit: cover;
+            }
+        
+            .article-title {
+           
+            margin-bottom: 1rem;
+            }
+        
+        .article-text {
+           
+            line-height: 1.6;
+        }
+        
+        .news-section {
+            padding: 4rem 0;
             
         }
         
-        .newsletter-card img {
-            height: 295px;
-            object-fit: cover;
-            width: 368%;
-            border-radius: 8px;
-            
-        }
-
-        .newsletter-card:hover {
-            transform: translateY(-5px);
-        }
         
-        .carousel-indicators [data-bs-target] {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 6px;
-        }
+       
+    
         
         /* Footer styles from paste.txt */
         .footer {
@@ -453,7 +400,56 @@
 
      <!-- Page content -->
      <main>
-        {% block content %}{% endblock %}
+        
+            <section class="news-section">
+                <div class="container">
+                    <h1 class="section-title">Events</h2>
+                    
+                    <div class="row g-4">
+                        <!-- Article 1 -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="article-card card">
+                                <img src="https://placehold.co/600x400/eee/ccc" class="article-image card-img-top" alt="Health Campaign Document">
+                                <div class="card-body">
+                                    <h2 class="article-title"><a href="#" class="text-decoration-none">
+                                        DHIN hosts inaugural standards and interoperability connection  </a></h2>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 2 -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="article-card card">
+                                <img src="https://placehold.co/600x400/eee/ccc" class="article-image card-img-top" alt="Digital Health Program">
+                                <div class="card-body">
+                                    <h2 class="article-title"><a href="#" class="text-decoration-none">
+                                        DHIN host EMR Vendor showcase & US Gov (ONC) for August 2024 Cop meeting.</a></h3>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 3 -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="article-card card">
+                                <img src="https://placehold.co/600x400/eee/ccc" class="article-image card-img-top" alt="Healthcare Professionals Meeting">
+                                <div class="card-body">
+                                    <h2 class="article-title"><a href="#" class="text-decoration-none">
+                                        DHIN facilitates stakeholders meeting on harmonization of Electronic Medical Records (EMR) in federal tertiary hospitals.</a></h2>
+                                    
+                                </div>
+                            </div>
+                        </div>
+        
+                
+                        
+                    </div>
+                </div>
+            </section>
+            
+            
+        
     </main>
 
 

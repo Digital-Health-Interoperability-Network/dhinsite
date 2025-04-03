@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'newsletter_list' %}">Newsletters</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ newsletter.title }}</li>
+                </ol>
+            </nav>
+            
+            <article class="card border-0 shadow-sm">
+                {% if newsletter.cover_image %}
+                <img src="{{ newsletter.cover_image.url }}" class="card-img-top" alt="{{ newsletter.title }}">
+                {% endif %}
+                
+                <div class="card-body p-4 p-md-5">
+                    <h1 class="card-title mb-3">{{ newsletter.title }}</h1>
+                    <p class="text-muted mb-4">
+                        Published on {{ newsletter.date_published|date:"F d, Y" }}
+                    </p>
+                    
+                    <div class="card-text mb-4">
+                        {{ newsletter.description }}
+                    </div>
+                    
+                    <div class="card-text">
+                        {{ newsletter.content|safe }}
+                    </div>
+                </div>
+            </article>
+            
+            <div class="mt-4">
+                <a href="{% url 'newsletter_list' %}" class="btn btn-outline-primary">&larr; Back to All Newsletters</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

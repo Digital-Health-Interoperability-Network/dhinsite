@@ -9,10 +9,10 @@ from rest_framework.decorators import action
 from django.templatetags.static import static
 from rest_framework import generics
 from django.http import JsonResponse
-
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
+from django.views.generic import ListView, DetailView
 
 
 
@@ -21,7 +21,9 @@ from django.views import View
 
 # Home Page View
 def home(request):
-    return render(request, 'DHIN_REVAMP/Homepage.html')  # Make sure 'home.html' exists in the templates folder
+    newsletters = Newsletter.objects.all().order_by('-created_at')[:3]  # Get the latest 3 newsletters
+    return render(request, 'DHIN_REVAMP/Homepage.html', {'newsletters': newsletters})  # Make sure 'home.html' exists in the templates folder
+
 
 # About Page View
 def about(request):
@@ -70,47 +72,23 @@ class NewsletterViewSet(viewsets.ModelViewSet):
 # Traditional views for newsletter
 
 # List all newsletters
-def newsletter_list(request):
-    newsletters = Newsletter.objects.all()
-    return render(request, 'DHIN_REVAMP/newsletter_list.html', {'newsletters': newsletters})
+class NewsletterListView(ListView):
+    model = Newsletter
+    template_name = 'DHIN_REVAMP/newsletter_list.html'
+    context_object_name = 'newsletters'
+    paginate_by = 6  
 
-# View a specific newsletter
-def newsletter_detail(request, slug):
-    newsletter = get_object_or_404(Newsletter, slug=slug)
-    return render(request, 'DHIN_REVAMP/newsletter_detail.html', {'newsletter': newsletter})
+    def get_queryset(self):
+        return Newsletter.objects.filter(is_active=True)
 
-# Create a new newsletter
-def newsletter_create(request):
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('newsletter_list')  # Redirect to the newsletter list view
-    else:
-        form = NewsletterForm()
-    return render(request, 'DHIN_REVAMP/newsletter_create.html', {'form': form})
+# Detail View for a specific newsletter
+class NewsletterDetailView(DetailView):
+    model = Newsletter
+    template_name = 'DHIN_REVAMP/newsletter_detail.html'
+    context_object_name = 'newsletter'
 
-# Update an existing newsletter
-def newsletter_update(request, slug):
-    newsletter = get_object_or_404(Newsletter, slug=slug)
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST, request.FILES, instance=newsletter)
-        if form.is_valid():
-            form.save()
-            return redirect('newsletter_detail', slug=newsletter.slug)
-    else:
-        form = NewsletterForm(instance=newsletter)
-    return render(request, 'DHIN_REVAMP/newsletter_update.html', {'form': form})
-
-# Delete a newsletter
-def newsletter_delete(request, slug):
-    newsletter = get_object_or_404(Newsletter, slug=slug)
-    if request.method == 'POST':
-        newsletter.delete()
-        return redirect('newsletter_list')
-    return render(request, 'DHIN_REVAMP/newsletter_delete.html.html', {'newsletter': newsletter})
-
-
+    def get_queryset(self):
+        return Newsletter.objects.filter(is_active=True).order_by('-date_published')
 
 # API Viewsets for registration
 class CustomUserViewSet(viewsets.ModelViewSet):

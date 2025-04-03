@@ -218,34 +218,53 @@
             border-radius: 15px;
         }
         
-        .newsletter-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            padding: 10px;
-            
-        }
-        
-        .newsletter-card img {
-            height: 295px;
-            object-fit: cover;
-            width: 368%;
-            border-radius: 8px;
-            
-        }
+        .news-section {
+    padding: 4rem 0;
+}
 
-        .newsletter-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .carousel-indicators [data-bs-target] {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 6px;
-        }
+.container {
+    max-width: 1200px;  /* Adjusts the width of the section */
+    margin: 0 auto;  /* Centers the container */
+}
 
+.article-card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.article-image {
+    height: 250px; /* Adjust image height */
+    object-fit: cover;
+    width: 100%;  /* Makes sure the image fills the card */
+    border-radius: 8px;
+}
+
+.article-title {
+    font-size: 18px; /* Adjust title font size */
+    font-weight: medium;
+    margin-bottom: 1rem;
+}
+
+.article-title a {
+    text-decoration: none;
+    color: #012862;
+}
+
+.article-text {
+    font-size: 14px; /* Adjust description font size */
+    color: #333;
+    line-height: 1.6;
+}
        
         
         /* Footer styles from paste.txt */
@@ -591,48 +610,35 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="py-5">
+   
+    <section class="news-section">
         <div class="container">
-            <h2 class="section-title">Newsletter</h2>
+            <h1 class="section-title">Latest News And Articles</h1>
             <div class="row g-4">
-                <!-- Newsletter Card 1 -->
-                <div class="col-md-4">
-                    <div class="newsletter-card">
-                        <img src="{% static 'images/pic18.JPG' %}" alt="Newsletter 1" class="img-fluid">
-                        <div class="card-body"><br>
-                            <h5 class="card-title">Alliance with All Health Information Exchange Partners and Government</h5>
-                            <p class="card-text">At the Digital Health Interoperability Network (DHIN), we are dedicated to accelerating universal health coverage through digital health interventions.</p>
-                            <small class="text-muted">Published on October 10, 2023 by DHIN Team</small>
+                {% for newsletter in newsletters %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="article-card card">
+                        {% if newsletter.cover_image %}
+                            <img src="{{ newsletter.cover_image.url }}" class="article-image card-img-top" alt="{{ newsletter.title }}">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" class="article-image card-img-top" alt="Default Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h2 class="article-title">
+                                <a href="{% url 'newsletter_detail' slug=newsletter.slug %}" class="text-decoration-none">
+                                    {{ newsletter.title }}
+                                </a>
+                            </h2>
+                            <p class="article-text">{{ newsletter.description|truncatewords:20 }}</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Newsletter Card 2 -->
-                <div class="col-md-4">
-                    <div class="newsletter-card">
-                        <img src="{% static 'images/pic27.JPG' %}" alt="Newsletter 2" class="img-fluid">
-                        <div class="card-body"><br>
-                            <h5 class="card-title">The Hidden Cost of Overlooking Interoperability in Health Care Systems</h5>
-                            <p class="card-text">At the Digital Health Interoperability Network (DHIN), we are dedicated to accelerating universal health coverage through digital health interventions.</p>
-                            <small class="text-muted">Published on October 10, 2023 by DHIN Team</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Newsletter Card 3 -->
-                <div class="col-md-4">
-                    <div class="newsletter-card">
-                        <img src="{% static 'images/pic37.JPG' %}" alt="Newsletter 3" class="img-fluid" >
-                        <div class="card-body"><br>
-                            <h5 class="card-title">Towards Connected Healthcare and Interoperability</h5>
-                            <p class="card-text">At the Digital Health Interoperability Network (DHIN), we are dedicated to accelerating universal health coverage through digital health interventions.</p>
-                            <small class="text-muted">Published on October 10, 2023 by DHIN Team</small>
-                        </div>
-                    </div>
-                </div>
+                {% empty %}
+                <p>No newsletters available.</p>
+                {% endfor %}
             </div>
         </div>
-    </section>
+    </section> <br><br>
 
     <!-- Footer (Replaced with footer from paste.txt) -->
     <footer class="footer">
@@ -641,7 +647,6 @@
                 <div class="footer-section">
                     <div class="footer-logo">
                         <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
-                        <h2>DHIN</h2>
                     </div>
                 </div>
                 
