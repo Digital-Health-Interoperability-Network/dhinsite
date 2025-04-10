@@ -154,8 +154,8 @@ h1 {
              }
          .container
          {
-            margin-bottom: 50px;
-            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-top: 5px;
          }
         
         /* Footer styles from paste.txt */
@@ -365,7 +365,7 @@ h1 {
      <main>
         <div class="container-fluid standards-section">
             <div class="container">
-                <h1 class="text-center section-title py-5">GLOBAL STANDARDS</h1>
+                <h1 class="text-center section-title py-3 ">GLOBAL STANDARDS</h1>
             <p class=" ">Countries are encouraged to use open standards for health data exchange. Standard means that it has a common schema for health data, calculations, and information exchange, and open means that different countries and providers can access and use them, instead of countries each developing their own. Open standards that have emerged in the health sector, include these:
                 Digital Imaging and Communications in Medicine (DICOM):DICOM is the international standard to transmit, store, retrieve, print, process, and display medical imaging information.
                 Fast Healthcare Interoperability Resource (FHIR):FHIR, based on HL7, is an interoperability standard intended to facilitate the exchange of healthcare information between healthcare providers, patients, caregivers, payers, researchers, and anyone else involved in the healthcare ecosystem. It consists of 2 main parts – a content model in the form of ‘resources’, and a specification for the exchange of these resources.
@@ -399,7 +399,8 @@ h1 {
                     <h3>Quick Link</h3>
                     <li><a href="{% url 'about' %}">About DHIN</a></li>
                     <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
-                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'event_list' %}">Events</a></li>
+                    <li><a href="{% url 'newsletter_list' %}">Newsletter</a></li>
                     <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
                     <li><a href="{% url 'national_standards' %}">National Standards</a></li>
                 </ul>

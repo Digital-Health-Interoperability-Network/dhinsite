@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Newsletter, CustomUser, Event, Contact, NewsletterSubscriber
+from .models import Newsletter, CustomUser,  Contact, Event, NewsletterSubscriber
 
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,16 +11,18 @@ class CustomUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id', 'email', 'username', 'first_name', 'last_name', 'phone_number', 'occupation', 'date_joined', 'is_active']
 
-class EventSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Event
-        fields = ['id', 'title', 'description', 'date', 'location', 'is_active']
+
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ['id', 'full_name', 'email', 'message']
 
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = '__all__'
 
 class NewsletterSubscriberSerializer(serializers.ModelSerializer):
     class Meta:

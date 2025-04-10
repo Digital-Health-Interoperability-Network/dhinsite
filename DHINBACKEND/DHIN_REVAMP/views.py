@@ -1,18 +1,15 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.response import Response
-from .models import Newsletter, CustomUser, Event, Contact, NewsletterSubscriber
-from .serializers import NewsletterSubscriberSerializer, CustomUserSerializer, EventSerializer, ContactSerializer,  NewsletterSerializer
+from .models import Newsletter, CustomUser,  Contact,Event, NewsletterSubscriber
+from .serializers import NewsletterSubscriberSerializer, CustomUserSerializer,  ContactSerializer, EventSerializer,  NewsletterSerializer
 from django.shortcuts import render,  get_object_or_404, redirect
 from .forms import NewsletterForm, ContactForm,CustomUserForm,NewsletterSubscriberForm 
-from rest_framework.decorators import action
-from django.templatetags.static import static
 from rest_framework import generics
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import View
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
 
 
 
@@ -126,39 +123,40 @@ class ContactViewSet(viewsets.ModelViewSet):
 
 
 # Traditional views for contactus
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')  # Redirect to home or success page
-    else:
-        form = ContactForm()
-    return render(request, 'DHIN_REVAMP/contact.html', {'form': form})
+class ContactView(FormView):
+    template_name = 'DHIN_REVAMP/contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('home')  # Redirect after successful form submission
+
+    def form_valid(self, form):
+        form.save()  # Save the form to the database
+        return super().form_valid(form)
 
 
 
 
 # API Viewsets for Events
 
-
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all()
+    queryset = Event.objects.all().order_by('-date_published')
     serializer_class = EventSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
+    lookup_field = 'slug'
 
 # Traditional views for Events
 
-class EventListView(View):
-       def get(self, request):
-           events = Event.objects.all()
-           return render(request, 'DHIN_REVAMP/event.html', {'events': events})
+class EventListView(ListView):
+    model = Event
+    template_name = 'DHIN_REVAMP/event_list.html'
+    context_object_name = 'events'
+    ordering = ['-date_published']
 
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'DHIN_REVAMP/event_detail.html'
+    context_object_name = 'event'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
 
-def event_detail(request, slug):
-    event = get_object_or_404(Event, slug=slug)
-    return render(request, 'event.html', {'event': event})
 
 
 

@@ -92,35 +92,31 @@ class CustomUser(AbstractBaseUser):
     def __str__(self):
         return f"{self.email} | {self.first_name} {self.last_name} | {self.phone_number} | {self.occupation}"
 
-
+# EVENT MODEL
 class Event(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
-    location = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='event_images/', blank=True, null=True)
-    registration_url = models.URLField(blank=True, null=True)
-    is_active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return f"/events/{self.id}/"
-
-    class Meta:
-        ordering = ['-start_date']
+    description = models.TextField()
+    date_published = models.DateField(default=timezone.now)
+    content = models.TextField()
+    cover_image = models.ImageField(upload_to='event_images/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
-        super(Event, self).save(*args, **kwargs)
+            base_slug = slugify(self.title)
+            slug = base_slug
+            counter = 1
+            while Event.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
 
 
+   #NewsletterSubscriber MODEL
 class NewsletterSubscriber(models.Model):
     email = models.EmailField(unique=True)  # Ensure the email is unique
 

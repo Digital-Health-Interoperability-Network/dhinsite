@@ -1,17 +1,16 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views  # ✅ Import views once (no need to import specific functions)
-from .views import NewsletterViewSet, CustomUserViewSet, ContactViewSet, EventViewSet, NewsletterSubscriberCreateView
-from django.views.generic import TemplateView
-from django.views.generic import TemplateView
+from .views import NewsletterViewSet, CustomUserViewSet,   NewsletterSubscriberCreateView, ContactViewSet
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import (
     NewsletterDetailView, NewsletterListView,
-    CustomUserListView,
-    EventListView,
-    event_detail,
+    CustomUserListView,ContactView,
+    EventListView, EventDetailView, EventViewSet,
     subscribe_newsletter,
     register_user,
-    contact
+   
     
     
 )
@@ -21,7 +20,7 @@ router = DefaultRouter()
 router.register(r'newsletters', views.NewsletterViewSet)
 router.register(r'users', views.CustomUserViewSet)
 router.register(r'events', views.EventViewSet)
-router.register(r'contacts', ContactViewSet)
+router.register(r'contacts', views.ContactViewSet)
 
 
 urlpatterns = [
@@ -51,15 +50,15 @@ urlpatterns = [
 
     # Events
     path('events/', EventListView.as_view(), name='event_list'),
-    path('events/<slug:slug>/', event_detail, name='event_detail'),
+    path('events/<slug:slug>/', EventDetailView.as_view(), name='event_detail'),
 
     # Contact Us
-    path('contact/', contact, name='contact'),
+    
+     path('contact/', ContactView.as_view(), name='contact'),
 
     # URL for the newsletter subscription form
     path('subscribe/', subscribe_newsletter, name='subscribe_newsletter'),
     
+    ]
 
 
-    
-]

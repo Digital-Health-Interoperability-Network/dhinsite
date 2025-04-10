@@ -1,5 +1,5 @@
 from django import forms
-from .models import Newsletter, CustomUser, Contact, NewsletterSubscriber
+from .models import Newsletter, CustomUser, Contact, Event, NewsletterSubscriber
 
 # Define the possible choices for the occupation field
 OCCUPATION_CHOICES = [
@@ -49,6 +49,11 @@ class CustomUserForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         return cleaned_data
+    
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['title', 'description', 'date_published', 'content', 'cover_image']
 
 
 class NewsletterSubscriberForm(forms.ModelForm):

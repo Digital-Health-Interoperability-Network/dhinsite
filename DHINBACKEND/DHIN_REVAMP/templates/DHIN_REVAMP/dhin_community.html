@@ -333,7 +333,7 @@
         }
         
         .copyright {
-            margin-right: 1rem;
+            margin-right: 40rem;
         }
         
         .social-icons {
@@ -552,7 +552,8 @@
                     <h3>Quick Link</h3>
                     <li><a href="{% url 'about' %}">About DHIN</a></li>
                     <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
-                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'event_list' %}">Events</a></li>
+                    <li><a href="{% url 'newsletter_list' %}">Newsletter</a></li>
                     <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
                     <li><a href="{% url 'national_standards' %}">National Standards</a></li>
                 </ul>

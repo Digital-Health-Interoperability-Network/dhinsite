@@ -1,5 +1,5 @@
 from django.contrib import admin
-from. models import  Newsletter, CustomUser, Event, Contact, NewsletterSubscriber
+from. models import  Newsletter,  CustomUser,  Contact, Event, NewsletterSubscriber
  
 # Register your models here.
 
@@ -11,7 +11,13 @@ class NewsletterAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'date_published'
     ordering = ('-date_published',)
-admin.site.register(Event)
+
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('title', 'date_published')
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title', 'description', 'content')
+
 admin.site.register(CustomUser)
 admin.site.register(Contact)
 admin.site.register(NewsletterSubscriber)

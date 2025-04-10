@@ -1,0 +1,63 @@
+{% load static %}
+<head>
+<style>
+.custom-back-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #005AFF;
+    border-radius: 25px;
+    color: #005AFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.custom-back-btn:hover {
+    background-color: #005AFF;
+    color: #fff;
+}
+
+.custom-spacing {
+    margin-top: 3rem; /* adjust as needed */
+}
+</style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+    
+                <article class="card border-0 shadow-sm">
+                    {% if event.cover_image %}
+                        <img src="{{ event.cover_image.url }}" class="card-img-top img-fluid" width="1500px" height="544px" alt="{{ event.title }}" style="object-fit: cover; max-width: 100%;">
+                    {% endif %}
+    
+                    <h1 class="card-title mb-3" style="color: #001e42;">
+                        {{ event.title }}
+                    </h1>
+    
+                    <p class="text-muted mb-4">
+                        Published on {{ event.date_published|date:"F d, Y" }}
+                    </p>
+    
+                    <div class="card-text mb-4">
+                        {{ event.description }}
+                    </div>
+    
+                    <div class="card-text">
+                        {{ event.content|safe }}
+                    </div>
+                </article>
+    
+                <div class="custom-spacing mt-4">
+                    <a href="{% url 'event_list' %}" class="custom-back-btn">
+                         Back to All Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</body>

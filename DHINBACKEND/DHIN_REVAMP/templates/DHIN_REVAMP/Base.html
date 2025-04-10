@@ -59,13 +59,18 @@
             color: #0d0f11; /* Slightly lighter blue color */
             font-size: 16px; /* Font size */
 
-             /* Specific styles for h1 */
             h1 {
-            color: #012862 ;
-            font-size: 25px; /* Larger font size for h1 */
-            font-weight: medium; /* Bold text */
+            color: #012862;
+            font-size: 30px;
+            font-weight: bold;
             }
+             h2{
+                color: #012862;
+                font-size: 20px;
+                font-weight: medium;
+            
             }
+        }
             
             
         }
@@ -367,7 +372,8 @@
                     <h3>Quick Link</h3>
                     <li><a href="{% url 'about' %}">About DHIN</a></li>
                     <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
-                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'event_list' %}">Events</a></li>
+                    <li><a href="{% url 'newsletter_list' %}">Newsletter</a></li>
                     <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
                     <li><a href="{% url 'national_standards' %}">National Standards</a></li>
                 </ul>

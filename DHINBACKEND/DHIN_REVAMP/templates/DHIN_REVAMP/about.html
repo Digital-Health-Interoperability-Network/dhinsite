@@ -154,7 +154,7 @@
         .mission-principles-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 40px;
+            padding: 40px 15px;
         }
 
         .mission-content, 
@@ -698,7 +698,8 @@
                     <h3>Quick Link</h3>
                     <li><a href="{% url 'about' %}">About DHIN</a></li>
                     <li><a href="{% url 'dhin_community' %}">DHIN Community</a></li>
-                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'event_list' %}">Events</a></li>
+                    <li><a href="{% url 'newsletter_list' %}">Newsletter</a></li>
                     <li><a href="{% url 'global_standards' %}">Global Standards</a></li>
                     <li><a href="{% url 'national_standards' %}">National Standards</a></li>
                 </ul>
