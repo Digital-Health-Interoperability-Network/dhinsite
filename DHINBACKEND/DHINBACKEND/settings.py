@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'DHIN_REVAMP',
     'rest_framework',
     'django_extensions',
+    
 ]
 
 MIDDLEWARE = [

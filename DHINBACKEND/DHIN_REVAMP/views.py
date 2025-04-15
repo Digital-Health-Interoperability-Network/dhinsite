@@ -10,6 +10,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 
@@ -96,22 +97,20 @@ class CustomUserViewSet(viewsets.ModelViewSet):
 
 
 # Traditional views for registration
-class CustomUserListView(View):
-    def get(self, request):
-        form = CustomUserForm()
-        users = CustomUser.objects.all()
-        return render(request, 'DHIN_REVAMP/register_user.html', {'users': users})
 def register_user(request):
     if request.method == 'POST':
         form = CustomUserForm(request.POST)
         if form.is_valid():
             form.save()  # Save the new user
-            return redirect('user_list')  # Redirect to user list or another page after successful registration
+            messages.success(request, "Registration successful! Welcome to DHIN.")
+            return redirect('home')  # Redirect to homepage
+        else:
+            # If form is invalid, re-render the form with errors
+            messages.error(request, "Registration failed. Please correct the errors below.")
     else:
         form = CustomUserForm()
     
-    return render(request, 'DHIN_REVAMP/register_user.html', {'form': form})  # Render the registration template
-
+    return render(request, 'DHIN_REVAMP/register_user.html', {'form': form})
 
 
 
@@ -128,11 +127,11 @@ class ContactView(FormView):
     form_class = ContactForm
     success_url = reverse_lazy('home')  # Redirect after successful form submission
 
+    
     def form_valid(self, form):
-        form.save()  # Save the form to the database
+        form.save()
+        messages.success(self.request, "Your message has been sent successfully!") 
         return super().form_valid(form)
-
-
 
 
 # API Viewsets for Events
@@ -177,3 +176,4 @@ def subscribe_newsletter(request):
     return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=405)
 
 
+print("Loading views.py")

@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import (
     NewsletterDetailView, NewsletterListView,
-    CustomUserListView,ContactView,
+    ContactView,
     EventListView, EventDetailView, EventViewSet,
     subscribe_newsletter,
     register_user,
@@ -45,7 +45,7 @@ urlpatterns = [
     path('newsletters/', NewsletterListView.as_view(), name='newsletter_list'),
     path('newsletters/<slug:slug>/', NewsletterDetailView.as_view(), name='newsletter_detail'),
     # Users
-    path('users/', CustomUserListView.as_view(), name='user_list'),
+    
     path('users/register/', register_user, name='register_user'),
 
     # Events

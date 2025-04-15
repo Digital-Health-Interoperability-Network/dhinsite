@@ -148,6 +148,10 @@
     height: 98px;
     width: 98px;
 }
+
+.alert {
+  margin-top: 1rem;
+}
         
        
         /* Footer styles from paste.txt */
@@ -251,7 +255,7 @@
         }
         
         .copyright {
-            margin-right: 40rem;
+            margin-right: 36rem;
         }
         
         .social-icons {
@@ -261,7 +265,7 @@
         }
         
         .social-icon {
-            color: white;
+            color: rgb(251, 241, 241);
             text-decoration: none;
             font-size: 1.2rem;
             transition: opacity 0.3s;
@@ -334,6 +338,7 @@
             </ul>
             <div class="right-nav">
                 <a href="/contact" class="contact-btn">Contact Us</a>
+
                 <div class="search-icon" id="searchToggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -350,7 +355,17 @@
         </div>
     </div>
 </nav>
-        
+
+<div class="container mt-3">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>    
             
 {% block content %}
         
@@ -440,6 +455,20 @@
             searchForm.style.display = 'none';
         }
     });
+
+    // New script to fade out alerts
+    document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(function() {
+                        alert.remove(); // Remove from DOM after fading
+                    }, 500); // Match transition duration
+                }, 3000); // Delay before starting fade (3 seconds)
+            });
+        });
 </script>
 </body>
 </html>

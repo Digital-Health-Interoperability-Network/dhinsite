@@ -31,11 +31,19 @@ class NewsletterForm(forms.ModelForm):
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['full_name', 'email', 'message']
-    
-    full_name = forms.CharField(label='Full Name', max_length=255, widget=forms.TextInput(attrs={'placeholder': 'Enter your full name'}))
-    email = forms.EmailField(label='Email Address', widget=forms.EmailInput(attrs={'placeholder': 'Enter your email'}))
-    message = forms.CharField(label='Message', widget=forms.Textarea(attrs={'placeholder': 'Write your message here', 'rows': 5}))
+        fields = ['first_name', 'last_name', 'email', 'message']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email Address', 'class': 'form-control'}),
+            'message': forms.Textarea(attrs={'placeholder': 'Your Message', 'rows': 5, 'class': 'form-control'}),
+        }
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'email': 'Email Address',
+            'message': 'Your Message',
+        }
 
 
 class CustomUserForm(forms.ModelForm):
@@ -48,7 +56,15 @@ class CustomUserForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        username = cleaned_data.get('username')
+        # If username is not provided, use email as username
+        if not username and email:
+            cleaned_data['username'] = email
         return cleaned_data
+    
+
+
     
 class EventForm(forms.ModelForm):
     class Meta:
