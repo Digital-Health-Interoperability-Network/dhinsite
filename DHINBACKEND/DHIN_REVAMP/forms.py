@@ -46,26 +46,51 @@ class ContactForm(forms.ModelForm):
         }
 
 
+OCCUPATION_CHOICES = [
+    ('Healthcare Professionals', 'Healthcare Professionals'),
+    ('Technology Innovators', 'Technology Innovators'),
+    ('Researchers and Academics', 'Researchers and Academics'),
+    ('Policy Makers', 'Policy Makers'),
+    ('Students and Digital Health Enthusiasts', 'Students and Digital Health Enthusiasts'),
+    ('Interns', 'Interns'),
+]
+
 class CustomUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['email', 'username', 'first_name', 'last_name', 'phone_number', 'occupation']
+        fields = ['email', 'first_name', 'last_name', 'phone_number', 'occupation']
         widgets = {
-            'occupation': forms.Select(choices=OCCUPATION_CHOICES),
+            'occupation': forms.Select(choices=OCCUPATION_CHOICES, attrs={'class': 'form-select'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-    def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get('email')
-        username = cleaned_data.get('username')
-        # If username is not provided, use email as username
-        if not username and email:
-            cleaned_data['username'] = email
-        return cleaned_data
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is already registered")
+        return email
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        if phone_number and not phone_number.replace('+', '').replace('-', '').isdigit():
+            raise forms.ValidationError("Phone number must contain only digits, +, or -")
+        if phone_number and len(phone_number) > 15:
+            raise forms.ValidationError("Phone number must be 15 characters or fewer")
+        return phone_number
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_unusable_password()  # No password
+        if commit:
+            user.save()
+        return user
     
 
 
-    
+
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event

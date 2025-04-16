@@ -11,7 +11,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from django.contrib import messages
-
+import logging
 
 
 
@@ -20,7 +20,7 @@ from django.contrib import messages
 # Home Page View
 def home(request):
     newsletters = Newsletter.objects.all().order_by('-created_at')[:3]  # Get the latest 3 newsletters
-    return render(request, 'DHIN_REVAMP/Homepage.html', {'newsletters': newsletters})  # Make sure 'home.html' exists in the templates folder
+    return render(request, 'DHIN_REVAMP/home.html', {'newsletters': newsletters})  # Make sure 'home.html' exists in the templates folder
 
 
 # About Page View
@@ -97,16 +97,18 @@ class CustomUserViewSet(viewsets.ModelViewSet):
 
 
 # Traditional views for registration
+logger = logging.getLogger(__name__)
+
 def register_user(request):
     if request.method == 'POST':
         form = CustomUserForm(request.POST)
         if form.is_valid():
-            form.save()  # Save the new user
-            messages.success(request, "Registration successful! Welcome to DHIN.")
+            form.save()  # Saves user without password or username
+            messages.success(request, "Registration successful! Welcome to DHIN")
             return redirect('home')  # Redirect to homepage
         else:
-            # If form is invalid, re-render the form with errors
-            messages.error(request, "Registration failed. Please correct the errors below.")
+            logger.error(f"Form errors: {form.errors}")
+            messages.error(request, "Registration failed. Please correct the errors below")
     else:
         form = CustomUserForm()
     

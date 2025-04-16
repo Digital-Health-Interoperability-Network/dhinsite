@@ -27,9 +27,9 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'username', 'first_name', 'last_name', 'phone_number', 'occupation', 'date_joined')
-    list_filter = ('occupation', 'date_joined')
-    search_fields = ('email', 'username', 'first_name', 'last_name')
+    list_display = ('email', 'first_name', 'last_name', 'phone_number', 'occupation', 'date_joined', 'is_active', 'is_staff')
+    list_filter = ('occupation', 'is_active', 'is_staff', 'date_joined')
+    search_fields = ('email', 'first_name', 'last_name')
     ordering = ('-date_joined',)
-    
+
 admin.site.register(NewsletterSubscriber)

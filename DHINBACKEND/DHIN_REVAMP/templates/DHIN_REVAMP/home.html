@@ -117,11 +117,6 @@
     padding: 4rem 0;
 }
 
-.container {
-    max-width: 1200px;  /* Adjusts the width of the section */
-    margin: 0 auto;  /* Centers the container */
-}
-
 .article-card {
     border: none;
     border-radius: 8px;
@@ -189,6 +184,15 @@
             <h1 class="fw-bold">DIGITAL HEALTH<br>INTEROPERABILITY NETWORK</h1>
             <p class="my-4"style="color:white;">Empowering business healthcare and bringing innovations through the Digital Health Interoperability Network </style></p>
             <div class="mt-4">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                     <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                     </div>
+                    {% endif %}
                 <a href="{% url 'register_user' %}" class="btn btn-primary me-3" >Register</a>
                 <a href="{% url 'services' %}" class="btn btn-outline-light">Learn More</a>
             </div>
