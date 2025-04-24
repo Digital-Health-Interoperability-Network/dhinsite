@@ -1,0 +1,28 @@
+{% extends 'DHIN_REVAMP/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2>Search Results for "{{ query }}"</h2>
+
+    {% if newsletters or events %}
+        {% if newsletters %}
+        <h4>Newsletters</h4>
+        <ul>
+            {% for item in newsletters %}
+                <li><a href=" {% url 'newsletter_list' %} ">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if events %}
+        <h4>Events</h4>
+        <ul>
+            {% for event in events %}
+                <li><a href=" {% url 'event_list' %} ">{{ event.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% else %}
+        <p>No results found for "{{ query }}"</p>
+    {% endif %}
+</div>
+{% endblock %}

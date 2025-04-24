@@ -3,40 +3,7 @@
 {% block content %} 
     
     <style>
-        :root {
-            --primary-color: #012862;
-            --secondary-color: #faf8f9;
-        }
         
-    
-
-            body {
-            background-color:rgb(233, 249, 255) ;
-            color: black;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-
-            p {
-            color: #0d0f11; /* Slightly lighter blue color */
-            font-size: 16px; /* Font size */
-          
-            }
-            
-            
-        }
-
-      
-        
-h1 {
-            color: #012862;
-            font-size: 30px;
-            font-weight: bold;
-        }
-             h2{
-                color: #012862;
-                font-size: 20px;
-                font-weight: medium;
-             }
          .container
          {
             margin-bottom: 10px;
@@ -45,6 +12,15 @@ h1 {
         
        
         @media (max-width: 768px) {
+
+            .navbar-nav {
+            text-align: left;
+            padding: 0.5rem 0;
+            }
+    
+            .nav-item {
+            margin: 8px 0;
+            }
             .footer-content {
                 flex-direction: column;
                 gap: 40px;

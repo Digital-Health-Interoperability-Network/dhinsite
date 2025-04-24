@@ -2,147 +2,81 @@
 {% load static %}
 {% block content %} 
     <style>
-        :root {
-            --primary-color: #012862;
-            --secondary-color: #faf8f9;
-        }
-        
-    
-          
-
-            body {
-            background-color:rgb(233, 249, 255) ;
-            color: rgb(11, 5, 5);
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-
-            p {
-            color: #101112; 
-            font-size: 16px; 
-
-           }
-            h1 {
-            color: #012862;
-            font-size: 30px;
-            font-weight: bold;
-            }
-             h2{
-                color: #012862;
-                font-size: 20px;
-                font-weight: medium;
-            }
-            
-        }
-
        
-            /* css for the main content */
-             
-
-             
-
-             .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            }
-            .section-container {
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-             }
-             .hero-image {
-            width: 1305px;
-            height: 701px;
-            object-fit: cover;
-            max-width: 100%;
-            }
-
-            
-            .about-section, .gain-section {
-            border-left: 5px solid #0a3d82;
-            padding-left: 35px;
-            margin-left: 15px;
-            position: relative;
-        }
       
         
-
-        .gain-item {
-            margin-bottom: 15px;
-        }
-
-        .gain-item strong {
-            color: #0a3d82;
-        }
-
-        .hero-image {
-            width: 1305px;
-            height: 640px;
-            object-fit: cover;
-            max-width: 100%;
-        }
-
-        .join-section {
-            position: relative;
-            margin-top: 30px;
-        }
-
-       
-
-        .join-content {
-            padding-left: 35px;
-        }
-
+        /* Section styles */
         .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
            
         }
-
-        .membership-list {
-            list-style-type: none;
-            padding-left: 0;
-          
+        
+        .section-container {
+            padding: 1.5rem 1rem;
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: center;
         }
-
-        .membership-list li {
-            margin-bottom: 10px;
+        
+        /* Hero image */
+        .hero-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            max-height: 450px;
+        }
+        
+        /* Section styling with left border */
+        .about-section, .gain-section {
+            border-left: 5px solid #0a3d82;
+            padding-left: 15px;
+            margin-left: 10px;
             position: relative;
-            padding-left: 40px;
-           
+            margin-bottom: 2rem;
         }
-
-        .membership-list li::before {
-            content: '•';
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            
-            line-height: 1;
-        }
-
-
-            
+        
+        /* Responsive adjustments for small screens */
         
         
+        @media (max-width: 767px) {
+    
+        .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .newsletter-section {
+                width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+        }
+   
     </style>
-            
 
-     <!-- Page content -->
-    </main> 
-
-    <section class="section-container">
-        <h1 class="section-title">DHIN Community</h2>
-        <p class="card-text">Collaborating to Advance Digital Health Interoperability Together.</p>
-    </section>
-    <div class="container-fluid p-0">
-        <!-- Hero Image -->
-        <img src="{% static 'images/pic38.JPG' %}" alt="DHIN Community Group" class="img-fluid hero-image w-100">
+    <!-- Page content -->
+    <main class="container-fluid px-0">
+        <section class="section-container">
+            <h1 class="section-title">DHIN Community</h1>
+            <p class="card-text">Collaborating to Advance Digital Health Interoperability Together.</p>
+        </section>
         
-        <div class="container my-5">
+        <!-- Hero Image -->
+        <div class="px-0">
+            <img src="{% static 'images/pic38.JPG' %}" alt="DHIN Community Group" class="img-fluid hero-image w-100">
+        </div>
+        
+        <div class="container py-4">
             <!-- What We Are About Section -->
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12 about-section">
-                    <h2 class="section-title">What we are About?</h2>
+                    <h2 class="section-title">What we are About</h2>
                     <p>
                         The Digital Health Interoperability DHIN Community (DHINC) is a collaborative forum for professionals, 
                         organizations, and stakeholders passionate about improving healthcare data exchange. Our mission is to 
@@ -151,92 +85,74 @@
                 </div>
             </div>
 
-             <!-- What You Stand to Gain Section -->
-             <div class="row">
+            <!-- What You Stand to Gain Section -->
+            <div class="row mb-4">
                 <div class="col-12 gain-section">
                     <h2 class="section-title">What you stand to Gain</h2>
                     
                     <div class="gain-item">
                         <strong>Information Sessions:</strong>
-                        Participate in thought-provoking discussions on topics such as EHR interoperability, telemedicine, patient data security, and more.
+                        <span>Participate in thought-provoking discussions on topics such as EHR interoperability, telemedicine, patient data security, and more.</span>
                     </div>
                     
                     <div class="gain-item">
                         <strong>Interactive Events:</strong>
-                        Attend webinars, workshops, and meetups led by industry experts, addressing cutting-edge digital health challenges.
+                        <span>Attend webinars, workshops, and meetups led by industry experts, addressing cutting-edge digital health challenges.</span>
                     </div>
                     
                     <div class="gain-item">
                         <strong>Innovation Spotlights:</strong>
-                        Explore and share innovations that are revolutionizing healthcare delivery and patient outcomes.
+                        <span>Explore and share innovations that are revolutionizing healthcare delivery and patient outcomes.</span>
                     </div>
                     
                     <div class="gain-item">
                         <strong>Community Spotlights:</strong>
-                        Showcase your expertise, projects, and successes, and learn from others' experiences.
+                        <span>Showcase your expertise, projects, and successes, and learn from others' experiences.</span>
                     </div>
                     
                     <div class="gain-item">
                         <strong>Ask the experts:</strong>
-                        Have burning questions? Our community is a place to seek advice and insights from those who've been there.
+                        <span>Have burning questions? Our community is a place to seek advice and insights from those who've been there.</span>
                     </div>
                     
                     <div class="gain-item">
                         <strong>Exclusive Updates:</strong>
-                        Be the first to know about DHIN's initiatives, research findings, and industry partnerships.
+                        <span>Be the first to know about DHIN's initiatives, research findings, and industry partnerships.</span>
                     </div>
                 </div>
-
-                <div class="container-fluid py-5">
-                    <!-- Hero Image -->
-                    <img src="{% static 'images/pic40.jpg' %}" alt="DHIN Community Event" class="img-fluid hero-image w-100">
-                    
-                    <div class="container my-5">
-                        <!-- Who Can Join Us Section -->
-                        <div class="row join-section">
-                            <div class="col-12 join-content">
-                                <h2 class="section-title">Who can join us</h2>
-                                
-                                <p class="mb-4">Membership is free and open to:</p>
-                                
-                                <ul class="membership-list">
-                                    <li>Healthcare Professionals</li>
-                                    <li>Technology Innovators</li>
-                                    <li>Researchers and Academics</li>
-                                    <li>Policy Makers</li>
-                                    <li>Students and all Digital Health Enthusiasts and Interns</li>
-                                </ul>
-                                
-                                <div class="mt-4">
-                                    <a href="{% url 'register_user' %}">
-                                        <button class="btn btn-primary">Register</button>
-                                    </a>
-                                </div>
+            </div>
+            
+            <!-- Second Hero Image -->
+            <div class="px-0 mb-4">
+                <img src="{% static 'images/pic40.jpg' %}" alt="DHIN Community Event" class="img-fluid hero-image w-100">
+            </div>
+            
+            <!-- Who Can Join Us Section -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="join-section">
+                        <div class="join-content">
+                            <h2 class="section-title">Who can join us</h2>
+                            
+                            <p class="mb-3">Membership is free and open to:</p>
+                            
+                            <ul class="membership-list">
+                                <li>Healthcare Professionals</li>
+                                <li>Technology Innovators</li>
+                                <li>Researchers and Academics</li>
+                                <li>Policy Makers</li>
+                                <li>Students and all Digital Health Enthusiasts and Interns</li>
+                            </ul>
+                            
+                            <div class="mt-4 text-left">
+                                <a href="{% url 'register_user' %}" class="btn btn-primary">Register</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-            
-        
     </main>
 
-<script>
-    // Optional: Add any custom JavaScript interactions here
-    document.addEventListener('DOMContentLoaded', function() {
-        // Example: Add hover effect to principles
-        const principles = document.querySelectorAll('.principle');
-        principles.forEach(principle => {
-            principle.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = '#f8f9fa';
-                this.style.transition = 'background-color 0.3s ease';
-            });
-            principle.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = '';
-            });
-        });
-    });
-</script>
-{% endblock %}
+   
+{% endblock  %}

@@ -2,97 +2,45 @@
 {% load static %}
 {% block content %} 
     
-    <style>
-        :root {
-            --primary-color: #012862;
-            --secondary-color: #faf8f9;
-        }
-        
-            body {
-            background-color:rgb(233, 249, 255) ;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-
-            p {
-            color: #0d0f11; 
-            font-size: 16px; 
-            }
-             
-            h1 {
-            color: #012862; ;
-            font-size: 30px; 
-            font-weight: bold; 
-            }
-            h2 {
-            color: #012862;
-            font-size: 25px;
-        
-            }
-            
-            
-        }
+<style>
+    
 
 
-          /* css for the main content */
+    /* css for the main content */
 
           .section-container {
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+          padding: 2rem 1rem;
+          max-width: 1200px;
+          margin: 0 auto;
+          }
 
-  .section-title {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+          .section-title {
+          text-align: center;
+          margin-bottom: 3rem;
+          }
 
-  .service-block {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 5rem;
-    align-items: center;
-  }
-  .services-block img {
-            height: 446px;
-            object-fit: cover;
-            width: 680%;
-            border-radius: 8px;
-        }
+         
 
      
-
-        
-
-  @media (min-width: 768px) {
-    .service-block {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    .service-block.reverse {
-      flex-direction: row-reverse;
-    }
-  }
-
-  .service-img {
-    width: 100%;
-    max-width: 48%;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  .service-text {
-    max-width: 48%;
-    text-align: center;
-  }
-
-        @media (min-width: 768px) {
-        .service-text {
-         text-align: left;
+          .service-section {
+           margin-bottom: 4rem;
+          }
+          .service-img {
+           width: 100%;
+           height: auto;
+          border-radius: 10px;
+          }
+       
+         
+          @media (max-width: 768px) {
+            .navbar-nav {
+            text-align: left;
+            padding: 0.5rem 0;
             }
-            }  
-      
-        @media (max-width: 768px) {
+    
+            .nav-item {
+            margin: 8px 0;
+            }
             .footer-content {
                 flex-direction: column;
                 gap: 40px;
@@ -111,53 +59,80 @@
          
 
         }
-    </style>
+
+       
+  </style>
 
             
 
      <!-- Page content -->
-     <main>
-        <section class="section-container">
-            <h1 class="section-title">Our Services</h1>
-            <p class="card-text">DHIN drives digital health transformation by advocating for policies that promote interoperability, data governance, and global health standards. We implement international standards like HL7 FHIR and SNOMED CT, and work to integrate health systems, eliminating data silos. Through initiatives like the Testing Sandbox and Connectathon, we enable real-world testing of interoperability solutions. DHIN fosters collaboration among policymakers, developers, healthcare providers, and global organizations, building an ecosystem that accelerates digital health adoption and enhances healthcare delivery across Africa.</p> <br>
+   <main>
+       <section class="section-container ">
+         <h1 class="section-title">Our Services</h1>
+            <p class="card-text ">DHIN drives digital health transformation by advocating for policies that promote interoperability, data governance, and global health standards. We implement international standards like HL7 FHIR and SNOMED CT, and work to integrate health systems, eliminating data silos. Through initiatives like the Testing Sandbox and Connectathon, we enable real-world testing of interoperability solutions. DHIN fosters collaboration among policymakers, developers, healthcare providers, and global organizations, building an ecosystem that accelerates digital health adoption and enhances healthcare delivery across Africa.</p> <br>
           
-            <div class="service-block">
-              <img src="{% static 'images/pic9.JPG' %}" alt="Policy Advocacy" class="service-img" class="img-fluid rounded" width="680" height="446">
-              <div class="service-text">
-                <h2>Policy Advocacy </h2>
-                <p class="card-text" style= >At DHIN, we recognize that policy plays a critical role in driving digital health transformation. Our advocacy efforts focus on influencing policy decisions that promote interoperability, health data governance, and the adoption of global digital health standards. We actively engage with regulatory bodies, government agencies, and global health organizations to shape policies that facilitate seamless data exchange, protect patient privacy, and enhance healthcare service delivery. Through stakeholder engagements, policy dialogues, and collaborative working groups, we champion regulatory reforms that support the sustainable growth of digital health in low-resource settings.</p> <br>
-                <a href="/contact" class="contact-btn">Contact Us</a>
+
+
+
+
+
+            <div class="row service-section align-items-center">
+              <div class="col-md-6 mt-4">
+                <img src="{% static 'images/pic9.JPG' %}" alt="Policy Advocacy" class="service-img">
+              </div>
+              <div class="col-md-6 text-md-start text-center mt-4 mt-md-0">
+                <h2 class=>Policy Advocacy</h2>
+                <p>At DHIN, we recognize that policy plays a critical role in driving digital health transformation. Our advocacy efforts focus on influencing policy decisions that promote interoperability, health data governance, and the adoption of global digital health standards. We actively engage with regulatory bodies, government agencies, and global health organizations to shape policies that facilitate seamless data exchange, protect patient privacy, and enhance healthcare service delivery. Through stakeholder engagements, policy dialogues, and collaborative working groups, we champion regulatory reforms that support the sustainable growth of digital health in low-resource settings.</p>
+                <a href="/contact" class="btn btn-outline-primary mt-2">Contact Us</a>
               </div>
             </div>
-          
-            <div class="service-block reverse">
-              <img src="{% static 'images/pic30.JPG' %}" alt="Standardization" class="service-img" class="img-fluid rounded" width="680" height="446">
-              <div class="service-text">
-                <h2>Standardization</h2>
-                <p class="card-body">Interoperability cannot exist without standardization. DHIN is firmly committed to adoption and implementation of international health data standards such as HL7 FHIR, SNOMED CT, LOINC, and ICD-11. We work closely with health IT developers, government institutions, and healthcare providers to ensure that digital health systems adhere to these standards, enabling seamless data exchange and improving healthcare outcomes. Our technical working groups and training sessions focus on equipping stakeholders with the knowledge and tools needed to implement standard-compliant solutions, reducing data silos and fragmentation in health systems.</p> <br>
-                <a href="/contact" class="contact-btn">Contact Us</a>
+
+
+
+
+
+            <div class="row service-section align-items-center flex-md-row-reverse">
+              <div class="col-md-6">
+                <img src="{% static 'images/pic30.JPG' %}" alt="Standardization" class="service-img">
+              </div>
+              <div class="col-md-6 text-md-start text-center mt-4 mt-md-0">
+                <h2 class=>Standardization</h2>
+                <p>Interoperability cannot exist without standardization. DHIN is firmly committed to adoption and implementation of international health data standards such as HL7 FHIR, SNOMED CT, LOINC, and ICD-11. We work closely with health IT developers, government institutions, and healthcare providers to ensure that digital health systems adhere to these standards, enabling seamless data exchange and improving healthcare outcomes. Our technical working groups and training sessions focus on equipping stakeholders with the knowledge and tools needed to implement standard-compliant solutions, reducing data silos and fragmentation in health systems.</p> 
+                <a href="/contact" class="btn btn-outline-primary mt-2">Contact Us</a>
               </div>
             </div>
-          
-            <div class="service-block">
-              <img src="{% static 'images/pic3.JPG' %}" alt="Integration" class="service-img" width="680" height="446"class="img-fluid rounded">
-              <div class="service-text">
-                <h2>Integration</h2>
-                <p class="card-body">A core focus of DHIN is ensuring that digital health solutions can communicate with each other, eliminating data silos that hinder effective healthcare delivery. We drive efforts to integrate disparate health information systems, ensuring they work together to provide a unified and efficient healthcare ecosystem. We have various initiatives, including Testing Sandbox approach and annual Connectathon, where we provide real-world environments where stakeholders can test, validate, and refine their interoperability solutions.</p> <br>
-                <a href="/contact" class="contact-btn">Contact Us</a>
+
+
+
+            <div class="row service-section align-items-center">
+              <div class="col-md-6">
+                <img src="{% static 'images/pic3.JPG' %}" alt="Integration" class="service-img">
+              </div>
+              <div class="col-md-6 text-md-start text-center mt-4 mt-md-0">
+                <h2 class="text-blue">Integration</h2>
+                <p class="mb-3">A core focus of DHIN is ensuring that digital health solutions can communicate with each other, eliminating data silos that hinder effective healthcare delivery. We drive efforts to integrate disparate health information systems, ensuring they work together to provide a unified and efficient healthcare ecosystem. We have various initiatives, including Testing Sandbox approach and annual Connectathon, where we provide real-world environments where stakeholders can test, validate, and refine their interoperability solutions.</p> 
+                <a href="/contact" class="btn btn-outline-primary mt-2">Contact Us</a>
               </div>
             </div>
-          
-            <div class="service-block reverse">
-              <img src="{% static 'images/pic1.JPG' %}" alt="Collaboration" class="service-img" width="680" height="446" class="img-fluid rounded">
-              <div class="service-text">
-                <h2>Collaboration</h2>
-                <p class="card-body">
-                    Collaboration is at the heart of DHIN's approach. We bring together policymakers, health IT developers, healthcare providers, researchers, and global health organizations to co-create solutions that drive interoperability. Through our Community of Practice (CoP) sessions, strategic partnerships, and mentorship programs, we foster an ecosystem where knowledge sharing and capacity building thrive. By working together, we can accelerate the adoption of digital health innovations, streamline workflows, and enhance healthcare delivery across Africa...</p> <br>
-                <a href="/contact" class="contact-btn">Contact Us</a>
+            
+
+
+
+              <div class="row service-section align-items-center flex-md-row-reverse">
+                <div class="col-md-6">
+                   <img src="{% static 'images/pic1.JPG' %}" alt="Collaboration" class="service-img">
+                 </div>
+                <div class="col-md-6 text-md-start text-center mt-4 mt-md-0">
+                  <h2 class=>Collaboration</h2>
+                  <p>Collaboration is at the heart of DHIN's approach. We bring together policymakers, health IT developers, healthcare providers, researchers, and global health organizations to co-create solutions that drive interoperability. Through our Community of Practice (CoP) sessions, strategic partnerships, and mentorship programs, we foster an ecosystem where knowledge sharing and capacity building thrive. By working together, we can accelerate the adoption of digital health innovations, streamline workflows, and enhance healthcare delivery across Africa...</p> 
+                  <a href="/contact" class="btn btn-outline-primary mt-2">Contact Us</a>
+                </div>
               </div>
-            </div>
-          </section>
+           </div>
+
+
+
+            
     </main>
 
 

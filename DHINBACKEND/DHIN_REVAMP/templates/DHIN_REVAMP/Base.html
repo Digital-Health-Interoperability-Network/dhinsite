@@ -56,21 +56,27 @@
             line-height: 1.6;
 
             p {
-            color: #0d0f11; /* Slightly lighter blue color */
-            font-size: 16px; /* Font size */
+            color: #0d0f11; 
+            font-size: 16px; }
 
-            h1 {
+            h1{
             color: #012862;
-            font-size: 30px;
             font-weight: bold;
+            font-size: 30px;
             }
              h2{
                 color: #012862;
                 font-size: 20px;
-                font-weight: medium;
+                font-weight: bold;
             
             }
-        }
+
+            h3 {
+                color: #012862;
+                font-size: 10px;
+                font-weight: medium;
+            }
+        
             
             
         }
@@ -129,11 +135,17 @@
     stroke: #003f99;
 }
 
-.search-input {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+#searchForm {
+    max-width: 250px;
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    z-index: 1000;
+    background-color: white;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
 }
 .nav-link {
     color: #011533;
@@ -255,7 +267,7 @@
         }
         
         .copyright {
-            margin-right: 36rem;
+            margin-right: 40rem;
         }
         
         .social-icons {
@@ -281,64 +293,77 @@
 </head>
 <body>
      <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo">
-        </a>
-        <!-- Menu + Buttons grouped together -->
-        <div class="right-group">
-            <ul class="nav-menu">
-                <li><a class="nav-link" href="{% url 'home' %}" >Home</a></li>
-                <li><a class="nav-link" href="{% url 'about' %}">About DHIN</a></li>
-                <li><a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a></li>
-                <li><a class="nav-link" href="{% url 'event_list' %}">Event</a></li>
-                <li><a class="nav-link" href="{% url 'newsletter_list' %}">Newsletter</a></li>
-                <li class="nav-item dropdown d-flex align-items-center">
-                    <!-- Parent link to Standards page -->
-                    <a class="nav-link" href="{% url 'standards' %}">
-                        Standards
-                    </a>
-                    <!-- Separate toggle for dropdown -->
-                    <a class="nav-link dropdown-toggle ps-1" href="#" id="standardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                
-                    <!-- The dropdown -->
-                    <ul class="dropdown-menu" aria-labelledby="standardsDropdown">
-                        <li>
-                            <a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a>
-                        </li>
-                    </ul>
-                </li>
-                
-                </li>
-                    </ul>
-                </li>
-            </ul>
-            
-                </li>
-            </ul>
-            <div class="right-nav">
-                <a href="/contact" class="contact-btn">Contact Us</a>
-
-                <div class="search-icon" id="searchToggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </div>
-
-                  <!-- Hidden Search Input -->
-                    <form id="searchForm" action="/search/" method="get" style="display: none; margin-left: 10px;">
-                    <input type="text" name="q" placeholder="Search..." class="search-input">
-                    </form>
-                </div>
+     <nav class="navbar navbar-expand-lg navbar-light bg-background-color shadow-sm custom-navbar">
+        
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/dhinlogo.png' %}" alt="DHIN Logo" height="50">
+            </a>
+    
+            <!-- Hamburger / Toggler Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dhinNavbar" aria-controls="dhinNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Collapsible Menu -->
+            <div class="collapse navbar-collapse" id="dhinNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About DHIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dhin_community' %}">DHIN Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'event_list' %}">Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'newsletter_list' %}">Newsletter</a>
+                    </li>
+                    
+                    <!-- Standards Dropdown -->
+                    <li class="nav-item dropdown d-flex align-items-center">
+                        <!-- Parent link to Standards page -->
+                        <a class="nav-link" href="{% url 'standards' %}">
+                            Standards
+                        </a>
+                        <!-- Separate toggle for dropdown -->
+                        <a class="nav-link dropdown-toggle ps-1" href="#" id="standardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    
+                        <!-- The dropdown -->
+                        <ul class="dropdown-menu" aria-labelledby="standardsDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'global_standards' %}">Global Standard</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'national_standards' %}">National Standard</a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <!-- Contact + Search -->
+                    <li class="nav-item d-lg-flex align-items-center">
+                        <a href="{% url 'contact' %}" class="btn btn-primary ms-lg-3 mb-2 mb-lg-0">Contact Us</a>
+                    </li>
+                    <li class="nav-item d-lg-flex align-items-center">
+                        <div class="search-icon ms-lg-3" id="searchToggle" role="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        
+                        <!-- Hidden Search Form (initially hidden) -->
+                        <form id="searchForm" action="{% url 'search_results' %}" method="get" class="d-none mt-2">
+                            <input type="text" name="q" class="form-control form-control-sm" placeholder="Search anything...">
+                        </form>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <div class="container mt-3">
     {% if messages %}
@@ -431,14 +456,18 @@
 <!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.getElementById('searchToggle').addEventListener('click', function() {
-        const searchForm = document.getElementById('searchForm');
-        if (searchForm.style.display === 'none') {
-            searchForm.style.display = 'block';
-        } else {
-            searchForm.style.display = 'none';
-        }
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('searchToggle');
+        const form = document.getElementById('searchForm');
+
+        toggle.addEventListener('click', function () {
+            form.classList.toggle('d-none');
+            form.querySelector('input').focus();  // optional: auto-focus input
+        });
     });
+
+    
+
 
     // New script to fade out alerts
     document.addEventListener('DOMContentLoaded', function() {
@@ -453,6 +482,19 @@
                 }, 3000); // Delay before starting fade (3 seconds)
             });
         });
+
+          // Example: Add touch effect for mobile devices
+          const gainItems = document.querySelectorAll('.gain-item');
+            gainItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.style.backgroundColor = '#f8f9fa';
+                }, {passive: true});
+                
+                item.addEventListener('touchend', function() {
+                    this.style.backgroundColor = '';
+                }, {passive: true});
+            });
+        
 </script>
 </body>
 </html>

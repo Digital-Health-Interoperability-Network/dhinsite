@@ -4,35 +4,7 @@
 
 {% block content %} 
     <style>
-        :root {
-            --primary-color: #012862;
-            --secondary-color: #faf8f9;
-        }
-        
-
-            body {
-            background-color:rgb(233, 249, 255) ;
-            color:#011533;;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-
-            p {
-           
-            font-size: 16px; /* Font size */
-
-            }
-            }
-         /* css for the main content */
-         h1 {
-            color: #012862;
-            font-size: 30px;
-            font-weight: bold;
-        }
-             h2{
-                color: #012862;
-                font-size: 20px;
-                font-weight: medium;
-             }
+       
         .section-title {
     text-align: center;
     margin-bottom: 2rem;
@@ -44,14 +16,13 @@
   }
 
   .hero-image {
-            width: 1334px;
-            height: 544px;
+            width: 100%;
+            height: auto;
             border-radius: 8px;
             object-fit: cover;
             padding: none;
         }
-
-       
+      
         .mission-principles-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -78,9 +49,9 @@
 
         .mission-content h2,
         .principles-content h2 {
-            color: #012862;
+            
             margin-bottom: 20px;
-            font-size: 20px;
+          
         }
 
         .principle {
@@ -116,9 +87,9 @@
         }
 
         .core-values-content h2 {
+            
             color: #012862;
             margin-bottom: 20px;
-            font-size: 18px;
         }
 
         .core-values-list {
@@ -163,15 +134,15 @@
         }
 
         .governance-text h2 {
-            color: #012862;
-            margin-bottom: 20px;
-            font-size: 18px;
+         margin-bottom: 20px;
+        
         }
 
         .governance-text h3 {
             color: #012862;
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: bold;
         }
 
         
@@ -205,24 +176,20 @@
            
         }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        .social-icon {
-            color: #0D47A1;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-        .social-icon:hover {
-            color: var(--primary-color);
-        }
+    
        
 
 
         @media (max-width: 768px) {
+
+            .navbar-nav {
+            text-align: left;
+            padding: 0.5rem 0;
+            }
+    
+            .nav-item {
+            margin: 8px 0;
+            }
             .footer-content {
                 flex-direction: column;
                 gap: 40px;
@@ -245,7 +212,7 @@
      <!-- Page content -->
      <main>
         <section class="section-container">
-            <h1 class="section-title">About DHIN</h1>
+            <h1 class="section-title " style="color: #012862;">About DHIN</h1>
             <p class="card-text">Welcome to the Digital Health Interoperability Network (DHIN), where our commitment to universal health coverage drives us to foster an ecosystem of seamless integration.</p>
         </section>
 

@@ -3,10 +3,7 @@
 {% block content %}
 
 <style>
-    body {
-        padding: 20px;
-        background-color: #f5f5f5;
-    }
+  
     
     .main-content {
         text-align: center;
@@ -47,6 +44,33 @@
         background-color: #0d6efd;
         border: none;
     }
+
+
+    @media (max-width: 768px) {
+
+        .navbar-nav {
+            text-align: left;
+            padding: 0.5rem 0;
+            }
+    
+            .nav-item {
+            margin: 8px 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .newsletter-section {
+                width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+        }
 </style>
 
 <div class="container main-content">

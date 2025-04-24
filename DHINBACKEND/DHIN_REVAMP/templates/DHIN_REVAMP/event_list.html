@@ -2,34 +2,8 @@
 {% load static %}
 {% block content %} 
     <style>
-        :root {
-            --primary-color: #012862;
-            --secondary-color: #faf8f9;
-        }
-        
-            body {
-            background-color:rgb(233, 249, 255) ;
-            color: black;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;   
-            
-        }
-
+    
        
-                    h1 {
-                    color: #012862;
-                    font-size: 30px;
-                    font-weight: bold;
-                    }
-                     h2{
-                        color: #012862;
-                        font-size: 18px;
-                        font-weight: medium;
-                     }
-        
-                    
-        
-        
                      .section-title {
                     text-align: center;
                     margin-bottom: 4rem;
@@ -77,6 +51,15 @@
         
     
         @media (max-width: 768px) {
+
+            .navbar-nav {
+            text-align: left;
+            padding: 0.5rem 0;
+            }
+    
+            .nav-item {
+            margin: 8px 0;
+            }
             .footer-content {
                 flex-direction: column;
                 gap: 40px;

@@ -22,7 +22,16 @@ def home(request):
     newsletters = Newsletter.objects.all().order_by('-created_at')[:3]  # Get the latest 3 newsletters
     return render(request, 'DHIN_REVAMP/home.html', {'newsletters': newsletters})  # Make sure 'home.html' exists in the templates folder
 
-
+# search form
+def search_results(request):
+    query = request.GET.get('q', '')
+    newsletters = Newsletter.objects.filter(title__icontains=query) if query else []
+    events = Event.objects.filter(title__icontains=query) if query else []
+    return render(request, 'DHIN_REVAMP/search_results.html', {
+        'query': query,
+        'newsletters': newsletters,
+        'events': events,
+    })
 # About Page View
 def about(request):
     return render(request, 'DHIN_REVAMP/about.html')
