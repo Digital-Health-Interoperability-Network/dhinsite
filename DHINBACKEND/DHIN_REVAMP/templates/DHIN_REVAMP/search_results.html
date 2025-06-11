@@ -8,7 +8,7 @@
         <h4>Newsletters</h4>
         <ul>
             {% for item in newsletters %}
-                <li><a href=" {% url 'newsletter_list' %} ">{{ item.title }}</a></li>
+                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
             {% endfor %}
         </ul>
         {% endif %}
@@ -17,7 +17,7 @@
         <h4>Events</h4>
         <ul>
             {% for event in events %}
-                <li><a href=" {% url 'event_list' %} ">{{ event.title }}</a></li>
+                <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
             {% endfor %}
         </ul>
         {% endif %}

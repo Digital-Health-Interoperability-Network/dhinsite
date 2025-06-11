@@ -149,6 +149,22 @@
         color: #555;
         margin-bottom: 1rem;
     }
+
+
+    .contact-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.contact-method svg {
+    flex-shrink: 0;
+    color: #007BFF;
+}
   
     
     
@@ -210,15 +226,35 @@
                 </div>
                 
                 <div class="mt-6">
-                    <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email:</span>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <i class="fas fa-phone"></i>
-                        <span>Address:</span>
-                    </div>
+                    <div class="contact-section" style="margin-top: 1.5rem;">
+    <div class="contact-method">
+        <!-- Email Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M2 4h20v16H2z" fill="none"/>
+            <path d="M22 4H2v16h20V4zm-2 2v.511l-8 5.333-8-5.333V6h16zm0 12H4V8.322l8 5.333 8-5.333V18z"/>
+        </svg>
+        <span>Email:</span>
+        <span>info@dhin-hie.org</span>
+    </div>
+
+    <div class="contact-method">
+        <!-- Phone Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21c1.21.48 2.53.74 3.88.74a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C10.61 22 2 13.39 2 3.5a1 1 0 0 1 1-1H6.5a1 1 0 0 1 1 1c0 1.35.25 2.67.74 3.88a1 1 0 0 1-.21 1.11l-2.2 2.2z"/>
+        </svg>
+        <span>Phone:</span>
+        <span>+ (234) 8038718938</span>
+    </div>
+
+    <div class="contact-method">
+        <!-- Address Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+        </svg>
+        <span>Address:</span>
+        <span>No.35 Justice Sowemimo str, Asokoro, Abuja</span>
+    </div>
+</div>
                     
                    
                 </div>
